@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://bes757mpanhex"]
+
+[ext_resource type="Script" uid="uid://d3qlweosjgyca" path="res://scenes/2d_test.gd" id="1_icpdp"]
+[ext_resource type="PackedScene" uid="uid://cx7x0f3lh4aus" path="res://scenes/canvas_layer.tscn" id="1_l41ob"]
+
+[node name="2dTest" type="Node2D"]
+script = ExtResource("1_icpdp")
+
+[node name="CanvasLayer" parent="." instance=ExtResource("1_l41ob")]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1280.0
+offset_bottom = 720.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.0
+offset_top = -11.5
+offset_right = -1.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Action"
+
+[node name="TextEdit" type="TextEdit" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 2.0
+offset_top = -17.5
+offset_right = 130.0
+offset_bottom = 18.5
+grow_horizontal = 2
+grow_vertical = 2
+scroll_fit_content_height = true
