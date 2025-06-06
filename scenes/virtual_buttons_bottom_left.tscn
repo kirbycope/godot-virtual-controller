@@ -23,24 +23,28 @@ grow_vertical = 2
 position = Vector2(85, -185)
 texture_normal = ExtResource("1_qe86t")
 texture_pressed = ExtResource("2_1apt6")
+passby_press = true
 action = "dpad_down"
 
 [node name="TouchScreenButtonLeft" type="TouchScreenButton" parent="." groups=["TouchScreenButton"]]
 position = Vector2(5, -265)
 texture_normal = ExtResource("3_6oo8q")
 texture_pressed = ExtResource("4_6wd1c")
+passby_press = true
 action = "dpad_left"
 
 [node name="TouchScreenButtonRight" type="TouchScreenButton" parent="." groups=["TouchScreenButton"]]
 position = Vector2(165, -265)
 texture_normal = ExtResource("5_fgvu8")
 texture_pressed = ExtResource("6_ylfrq")
+passby_press = true
 action = "dpad_right"
 
 [node name="TouchScreenButtonUp" type="TouchScreenButton" parent="." groups=["TouchScreenButton"]]
 position = Vector2(85, -345)
 texture_normal = ExtResource("7_8lj22")
 texture_pressed = ExtResource("8_k7pkl")
+passby_press = true
 action = "dpad_up"
 
 [node name="TouchScreenButtonSelect" type="TouchScreenButton" parent="." groups=["TouchScreenButton"]]
