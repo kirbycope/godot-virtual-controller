@@ -34,6 +34,7 @@ var tap_initial_position = null
 @onready var touch_screen_button_r_1: TouchScreenButton = $"../VirtualButtons/VirtualButtonsTopRight/TouchScreenButtonR1"
 @onready var touch_screen_button_r_2: TouchScreenButton = $"../VirtualButtons/VirtualButtonsTopRight/TouchScreenButtonR2"
 
+
 ## Called when CanvasItem has been requested to redraw (after queue_redraw is called, either manually or by the engine).
 func _draw() -> void:
 
@@ -176,9 +177,6 @@ func _input(event: InputEvent) -> void:
 				# Trigger the [look_up] action _released_
 				Input.action_release("look_up")
 
-	# Update button passthrough after all touch processing
-	update_button_passthrough()
-
 	# Check if the input is a Drag event
 	if event is InputEventScreenDrag:
 
@@ -256,6 +254,9 @@ func _input(event: InputEvent) -> void:
 				Input.action_release("look_up")
 				Input.action_release("look_down")
 
+	# Update button passthrough after all touch processing
+	update_button_passthrough()
+
 	# Redraw canvas items via `_draw()`
 	queue_redraw()
 
@@ -296,19 +297,20 @@ func is_touch_on_button(event_position: Vector2) -> bool:
 ## Updates button passthrough based on active swipe events.
 func update_button_passthrough():
 
-	# Check if the "passby_press" should be enabled.
-	var should_passthrough = (left_swipe_event_index != null or right_swipe_event_index != null)
-
-	# Set the "passby_press" of the TouchScreenButton(s)
+	# Set the "passby_press" of controls on the left side of the viewport
+	var should_passthrough = (left_swipe_event_index == null)
 	touch_screen_button_down.passby_press = should_passthrough
 	touch_screen_button_left.passby_press = should_passthrough
 	touch_screen_button_right.passby_press = should_passthrough
 	touch_screen_button_up.passby_press = should_passthrough
+	touch_screen_button_l_1.passby_press = should_passthrough
+	touch_screen_button_l_2.passby_press = should_passthrough
+
+	# Set the "passby_press" of controls on the right side of the viewport
+	should_passthrough = (right_swipe_event_index == null)
 	touch_screen_button_a.passby_press = should_passthrough
 	touch_screen_button_b.passby_press = should_passthrough
 	touch_screen_button_x.passby_press = should_passthrough
 	touch_screen_button_y.passby_press = should_passthrough
-	touch_screen_button_l_1.passby_press = should_passthrough
-	touch_screen_button_l_2.passby_press = should_passthrough
 	touch_screen_button_r_1.passby_press = should_passthrough
 	touch_screen_button_r_2.passby_press = should_passthrough
