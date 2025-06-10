@@ -25,29 +25,6 @@ A [physical and] virtual controller for the Godot Game Engine.
 </details>
 
 <details>
-<summary>Export Game as Pack</summary>
-
-## Game Pack
-This game can be [exported](https://docs.godotengine.org/en/stable/tutorials/export/exporting_pcks.html#generating-pck-files) as a `.pck` and [imported](https://docs.godotengine.org/en/stable/tutorials/export/exporting_pcks.html#opening-pck-files-at-runtime) into another Godot game client, like the [Godot Game Client](https://github.com/kirbycope/godot-game-client).
-
-### Export Game as Pack Using Godot
-1. Select "Project" > "Export.."
-	1. Download the Presets, if prompted
-1. Select "Add..."
-1. Select "Web"
-1. Select "Export PCK/ZIP..."
-1. Change the type to "Godot Project Pack (*.pck)"
-1. Select "Save"
-
-### Export Game as Pack Using Bash
-1. Open the root folder using [VS Code](https://code.visualstudio.com/)
-	- If you use GitHub Desktop, select the "Open in Visual Studio" button
-1. Open the [integrated terminal](https://code.visualstudio.com/docs/editor/integrated-terminal) using the "Git Bash" profile
-1. Run the following command, `bash ci/export-pack.sh`
-
-</details>
-
-<details>
 <summary>Web Export</summary>
 
 ### Export Game as Web App
