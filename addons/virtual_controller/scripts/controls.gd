@@ -48,14 +48,6 @@ func _input(event: InputEvent) -> void:
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 
-	# Remove default actions from the Input Map
-	InputMap.erase_action("ui_accept")
-	InputMap.erase_action("ui_select")
-	InputMap.erase_action("ui_up")
-	InputMap.erase_action("ui_down")
-	InputMap.erase_action("ui_left")
-	InputMap.erase_action("ui_right")
-
 	# Check if [debug] action is not in the Input Map
 	if not InputMap.has_action("debug"):
 
