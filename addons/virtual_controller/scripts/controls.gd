@@ -1,4 +1,7 @@
 extends CanvasLayer
+# controls.gd
+# Script is used to set up the input controls for the game and to handle different input types such as keyboard, mouse, and game controllers.
+# This script is part of the Virtual Controller add-on for Godot Engine.
 
 var button_0 = "jump" 			# Key: Space, 							Controller: Ⓐ (Microsoft), Ⓑ (Nintendo), ⮾ (Sony)
 var button_1 = "sprint" 		# Key: Shift, 							Controller: Ⓑ (Microsoft), Ⓐ (Nintendo), 🄋 (Sony)

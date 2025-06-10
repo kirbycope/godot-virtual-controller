@@ -1,7 +1,12 @@
 extends Node2D
+# virtual_controller.gd
+# Script for the virtual controller that handles touch input for player movement and camera control.
+# This script is part of the Virtual Controller add-on for Godot Engine.
 
 const MAX_DISTANCE := 64
 const SWIPE_DEADZONE := 8
+
+@export var enable_analog_sticks := true
 
 var left_swipe_current_position = null
 var left_swipe_event_index = null
@@ -16,10 +21,27 @@ var tap_event_index = null
 var tap_initial_position = null
 
 @onready var player = get_parent().get_parent()
-
+@onready var touch_screen_button_down: TouchScreenButton = $"../VirtualButtons/VirtualButtonsBottomLeft/TouchScreenButtonDown"
+@onready var touch_screen_button_left: TouchScreenButton = $"../VirtualButtons/VirtualButtonsBottomLeft/TouchScreenButtonLeft"
+@onready var touch_screen_button_right: TouchScreenButton = $"../VirtualButtons/VirtualButtonsBottomLeft/TouchScreenButtonRight"
+@onready var touch_screen_button_up: TouchScreenButton = $"../VirtualButtons/VirtualButtonsBottomLeft/TouchScreenButtonUp"
+@onready var touch_screen_button_a: TouchScreenButton = $"../VirtualButtons/VirtualButtonsBottomRight/TouchScreenButtonA"
+@onready var touch_screen_button_b: TouchScreenButton = $"../VirtualButtons/VirtualButtonsBottomRight/TouchScreenButtonB"
+@onready var touch_screen_button_x: TouchScreenButton = $"../VirtualButtons/VirtualButtonsBottomRight/TouchScreenButtonX"
+@onready var touch_screen_button_y: TouchScreenButton = $"../VirtualButtons/VirtualButtonsBottomRight/TouchScreenButtonY"
+@onready var touch_screen_button_l_1: TouchScreenButton = $"../VirtualButtons/VirtualButtonsTopLeft/TouchScreenButtonL1"
+@onready var touch_screen_button_l_2: TouchScreenButton = $"../VirtualButtons/VirtualButtonsTopLeft/TouchScreenButtonL2"
+@onready var touch_screen_button_r_1: TouchScreenButton = $"../VirtualButtons/VirtualButtonsTopRight/TouchScreenButtonR1"
+@onready var touch_screen_button_r_2: TouchScreenButton = $"../VirtualButtons/VirtualButtonsTopRight/TouchScreenButtonR2"
 
 ## Called when CanvasItem has been requested to redraw (after queue_redraw is called, either manually or by the engine).
 func _draw() -> void:
+
+	# Check if analog sticks are not enabled
+	if not enable_analog_sticks:
+
+		# Return without drawing anything
+		return
 
 	# Check if there is a left-swipe event
 	if left_swipe_event_index != null:
@@ -154,6 +176,9 @@ func _input(event: InputEvent) -> void:
 				# Trigger the [look_up] action _released_
 				Input.action_release("look_up")
 
+	# Update button passthrough after all touch processing
+	update_button_passthrough()
+
 	# Check if the input is a Drag event
 	if event is InputEventScreenDrag:
 
@@ -235,7 +260,7 @@ func _input(event: InputEvent) -> void:
 	queue_redraw()
 
 
-## Checks if a given position is within any TouchScreenButton
+## Checks if a given position is within any TouchScreenButton.
 func is_touch_on_button(event_position: Vector2) -> bool:
 
 	# Get all TouchScreenButton nodes in the scene
@@ -266,3 +291,24 @@ func is_touch_on_button(event_position: Vector2) -> bool:
 
 	# If no button was found at the position, return false
 	return false
+
+
+## Updates button passthrough based on active swipe events.
+func update_button_passthrough():
+
+	# Check if the "passby_press" should be enabled.
+	var should_passthrough = (left_swipe_event_index != null or right_swipe_event_index != null)
+
+	# Set the "passby_press" of the TouchScreenButton(s)
+	touch_screen_button_down.passby_press = should_passthrough
+	touch_screen_button_left.passby_press = should_passthrough
+	touch_screen_button_right.passby_press = should_passthrough
+	touch_screen_button_up.passby_press = should_passthrough
+	touch_screen_button_a.passby_press = should_passthrough
+	touch_screen_button_b.passby_press = should_passthrough
+	touch_screen_button_x.passby_press = should_passthrough
+	touch_screen_button_y.passby_press = should_passthrough
+	touch_screen_button_l_1.passby_press = should_passthrough
+	touch_screen_button_l_2.passby_press = should_passthrough
+	touch_screen_button_r_1.passby_press = should_passthrough
+	touch_screen_button_r_2.passby_press = should_passthrough
