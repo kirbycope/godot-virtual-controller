@@ -5,6 +5,8 @@ A [physical and] virtual controller for the Godot Game Engine.
 
 ## Usage
 * Configure button/action assignments in [controls.gd](addons\virtual_controller\scripts\controls.gd).
+* Change the virtual controller's theme using an `@export` in [virtual_controller.gd](addons\virtual_controller\scripts\virtual_controller.gd)
+* Toogle virtual control sticks's using an `@export` in [virtual_controller.gd](addons\virtual_controller\scripts\virtual_controller.gd)
 * Press [F3] in-game to see the debug menu.
 
 ## Getting Started
