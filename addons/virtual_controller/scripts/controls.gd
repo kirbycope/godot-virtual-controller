@@ -270,7 +270,7 @@ func _ready() -> void:
 
 		# Keyboard ⍗
 		var key_event = InputEventKey.new()
-		key_event.physical_keycode = KEY_UP
+		key_event.physical_keycode = KEY_DOWN
 		InputMap.action_add_event("look_down", key_event)
 
 		# Controller [right-stick, down]
@@ -287,7 +287,7 @@ func _ready() -> void:
 
 		# Keyboard ⍈
 		var key_event = InputEventKey.new()
-		key_event.physical_keycode = KEY_LEFT
+		key_event.physical_keycode = KEY_RIGHT
 		InputMap.action_add_event("look_right", key_event)
 
 		# Controller [right-stick, right]
@@ -530,7 +530,7 @@ func set_current_input_type(event: InputEvent) -> void:
 			var device_name = Input.get_joy_name(event.device).to_lower()
 
 			# Check if the device name indicates it is a Microsoft [XBox] controller
-			if device_name.contains("xinput"):
+			if device_name.contains("xinput") or device_name.contains("standard"):
 
 				# Set the current input type to Mircosoft
 				current_input_type = InputType.MICROSOFT

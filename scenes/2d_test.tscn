@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bes757mpanhex"]
 
-[ext_resource type="Script" uid="uid://d3qlweosjgyca" path="res://addons/virtual_controller/scripts/2d_test.gd" id="1_icpdp"]
+[ext_resource type="Script" uid="uid://d3qlweosjgyca" path="res://scripts/2d_test.gd" id="1_icpdp"]
 [ext_resource type="PackedScene" uid="uid://cx7x0f3lh4aus" path="res://addons/virtual_controller/scenes/canvas_layer.tscn" id="1_l41ob"]
 
 [node name="2dTest" type="Node2D"]

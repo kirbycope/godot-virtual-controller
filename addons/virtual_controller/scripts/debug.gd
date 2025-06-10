@@ -3,12 +3,12 @@ extends Control
 @onready var controls = $".."
 
 @onready var microsoft_controller: Control = $MicrosoftController
-@onready var nintendo_controller: Control = $NintendoController
-@onready var sony_controller: Control = $SonyController
 @onready var microsoft_stick_l_origin: Vector2 = $MicrosoftController/White/StickL.position
 @onready var microsoft_stick_r_origin: Vector2 = $MicrosoftController/White/StickR.position
+@onready var nintendo_controller: Control = $NintendoController
 @onready var nintendo_stick_l_origin: Vector2 = $NintendoController/White/StickL.position
 @onready var nintendo_stick_r_origin: Vector2 = $NintendoController/White/StickR.position
+@onready var sony_controller: Control = $SonyController
 @onready var sony_stick_l_origin: Vector2 = $SonyController/White/StickL.position
 @onready var sony_stick_r_origin: Vector2 = $SonyController/White/StickR.position
 
@@ -28,8 +28,10 @@ func _input(event: InputEvent) -> void:
 		# Check if the current Input Event was triggered by a Microsoft joypad
 		if controls.current_input_type == controls.InputType.MICROSOFT:
 
-			# Show the controller
+			# Show the proper controller
 			$MicrosoftController.visible = true
+			$NintendoController.visible = false
+			$SonyController.visible = false
 
 			# ⍐ (D-Pad Up)
 			if event.is_action_pressed("dpad_up"):
@@ -102,17 +104,13 @@ func _input(event: InputEvent) -> void:
 			elif event.is_action_released("right_kick"):
 				$MicrosoftController/White/Button7.visible = true
 
-		# Input Event was not triggered by a Microsoft joypad
-		else:
-
-			# Hide the controller
-			$MicrosoftController.visible = false
-
 		# Check if the current Input Event was triggered by a Nintendo joypad
 		if controls.current_input_type == controls.InputType.NINTENDO:
 
 			# Show the controller
+			$MicrosoftController.visible = false
 			$NintendoController.visible = true
+			$SonyController.visible = false
 
 			# ⍐ (D-Pad Up)
 			if event.is_action_pressed("dpad_up"):
@@ -185,16 +183,12 @@ func _input(event: InputEvent) -> void:
 			elif event.is_action_released("right_kick"):
 				$NintendoController/White/Button7.visible = true
 
-		# Input Event was not triggered by a Nintendo joypad
-		else:
-
-			# Hide the controller
-			$NintendoController.visible = false
-
 		# Check if the current Input Event was triggered by a Sony joypad
 		if controls.current_input_type == controls.InputType.SONY:
 
 			# Show the controller
+			$MicrosoftController.visible = false
+			$NintendoController.visible = false
 			$SonyController.visible = true
 
 			# ⍐ (D-Pad Up)
@@ -267,12 +261,6 @@ func _input(event: InputEvent) -> void:
 				$SonyController/White/Button7.visible = false
 			elif event.is_action_released("right_kick"):
 				$SonyController/White/Button7.visible = true
-
-		# Input Event was not triggered by a Sony joypad 
-		else:
-
-			# Hide the controller
-			$SonyController.visible = false
 
 
 # Called when the node enters the scene tree for the first time.
