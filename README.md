@@ -11,7 +11,7 @@ A [physical and] virtual controller for the Godot Game Engine.
 
 ## Getting Started
 1. Install the addon
-2. Add the [canvas_layer.tscn](addons/virtual_controller/scenes/canvas_layer.tscn) as a child node to your Player
+2. Add the [canvas_layer.tscn](addons/virtual_controller/scenes/canvas_layer.tscn) as a child node to your scene
 
 <details>
 <summary>Using Addon</summary>
