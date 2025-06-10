@@ -5,10 +5,7 @@ extends Node2D
 
 ## Set the current input type.
 func _input(event: InputEvent) -> void:
-	# Only process events that could trigger actions
-	if event is InputEventKey \
-	or event is InputEventJoypadButton \
-	or event is InputEventMouseButton:
+	if event is not InputEventJoypadMotion:
 		var all_actions = InputMap.get_actions()
 		for action in all_actions:
 			if event.is_action_pressed(action):
