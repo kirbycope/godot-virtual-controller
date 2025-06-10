@@ -25,7 +25,7 @@ enum InputType {
 	MICROSOFT,
 	NINTENDO,
 	SONY,
-	TOUCH
+	TOUCH,
 }
 
 var current_input_type = InputType.KEYBOARD_MOUSE

@@ -3,9 +3,27 @@ extends Node2D
 # Script for the virtual controller that handles touch input for player movement and camera control.
 # This script is part of the Virtual Controller add-on for Godot Engine.
 
+enum theme {
+	DEFAULT,
+	NewNintendo3DS,
+	Nintendo64,
+	NintendoEntertainmentSystem,
+	NintendoGameCube,
+	SuperNintendoEntertainmentSystem,
+}
+
+const BD_NAVBAR = "#563d7c"		# PURPLE, LIGHT .bd-navbar
+const BTN_DANGER = "#dc3545"	# RED .btn-danger
+const BTN_DARK = "#343a40"		# BLACK .btn-dark
+const BTN_PRIMARY = "#007bff" 	# BLUE .btn-primary
+const BTN_SECONDARY = "#6c757d"	# GRAY .btn-secondary
+const BTN_SUCCESS = "#28a745"	# GREEN .btn-success
+const BTN_WARNING = "#ffc107"	# YELLOW .btn-warning
+const OLD_BV = "#322348"		# PURPLE, DARK .old-bv
 const MAX_DISTANCE := 64
 const SWIPE_DEADZONE := 8
 
+@export var current_theme = theme.DEFAULT
 @export var enable_analog_sticks := true
 
 var left_swipe_current_position = null
@@ -25,10 +43,12 @@ var tap_initial_position = null
 @onready var touch_screen_button_left: TouchScreenButton = $"../VirtualButtons/VirtualButtonsBottomLeft/TouchScreenButtonLeft"
 @onready var touch_screen_button_right: TouchScreenButton = $"../VirtualButtons/VirtualButtonsBottomLeft/TouchScreenButtonRight"
 @onready var touch_screen_button_up: TouchScreenButton = $"../VirtualButtons/VirtualButtonsBottomLeft/TouchScreenButtonUp"
+@onready var touch_screen_button_select: TouchScreenButton = $"../VirtualButtons/VirtualButtonsBottomLeft/TouchScreenButtonSelect"
 @onready var touch_screen_button_a: TouchScreenButton = $"../VirtualButtons/VirtualButtonsBottomRight/TouchScreenButtonA"
 @onready var touch_screen_button_b: TouchScreenButton = $"../VirtualButtons/VirtualButtonsBottomRight/TouchScreenButtonB"
 @onready var touch_screen_button_x: TouchScreenButton = $"../VirtualButtons/VirtualButtonsBottomRight/TouchScreenButtonX"
 @onready var touch_screen_button_y: TouchScreenButton = $"../VirtualButtons/VirtualButtonsBottomRight/TouchScreenButtonY"
+@onready var touch_screen_button_start: TouchScreenButton = $"../VirtualButtons/VirtualButtonsBottomRight/TouchScreenButtonStart"
 @onready var touch_screen_button_l_1: TouchScreenButton = $"../VirtualButtons/VirtualButtonsTopLeft/TouchScreenButtonL1"
 @onready var touch_screen_button_l_2: TouchScreenButton = $"../VirtualButtons/VirtualButtonsTopLeft/TouchScreenButtonL2"
 @onready var touch_screen_button_r_1: TouchScreenButton = $"../VirtualButtons/VirtualButtonsTopRight/TouchScreenButtonR1"
@@ -259,6 +279,85 @@ func _input(event: InputEvent) -> void:
 
 	# Redraw canvas items via `_draw()`
 	queue_redraw()
+
+
+## Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+
+	# Check if the current theme is "New Nintendo 3DS"
+	if current_theme == theme.NewNintendo3DS:
+		touch_screen_button_a.modulate = BTN_DANGER
+		touch_screen_button_b.modulate = BTN_WARNING
+		touch_screen_button_x.modulate = BTN_PRIMARY
+		touch_screen_button_y.modulate = BTN_SUCCESS
+
+	# Check if the current theme is "Nintendo 64"
+	elif current_theme == theme.Nintendo64:
+		touch_screen_button_down.modulate = BTN_DARK
+		touch_screen_button_up.modulate = BTN_DARK
+		touch_screen_button_left.modulate = BTN_DARK
+		touch_screen_button_right.modulate = BTN_DARK
+		touch_screen_button_a.modulate = BTN_PRIMARY
+		touch_screen_button_b.modulate = BTN_SUCCESS
+		touch_screen_button_x.visible = false
+		touch_screen_button_y.visible = false
+		touch_screen_button_select.visible = false
+		touch_screen_button_start.modulate = BTN_DANGER
+		touch_screen_button_l_1.modulate = BTN_DARK
+		touch_screen_button_l_2.modulate = BTN_DARK
+		touch_screen_button_r_1.modulate = BTN_DARK
+		touch_screen_button_r_2.modulate = BTN_DARK
+
+	# Check if the current theme is "Nintendo Entertainment System"
+	elif current_theme == theme.NintendoEntertainmentSystem:
+		touch_screen_button_down.modulate = BTN_DARK
+		touch_screen_button_up.modulate = BTN_DARK
+		touch_screen_button_left.modulate = BTN_DARK
+		touch_screen_button_right.modulate = BTN_DARK
+		touch_screen_button_a.modulate = BTN_DANGER
+		touch_screen_button_b.modulate = BTN_DANGER
+		touch_screen_button_x.visible = false
+		touch_screen_button_y.visible = false
+		touch_screen_button_select.modulate = BTN_DARK
+		touch_screen_button_start.modulate = BTN_DARK
+		touch_screen_button_l_1.visible = false
+		touch_screen_button_l_2.visible = false
+		touch_screen_button_r_1.visible = false
+		touch_screen_button_r_2.visible = false
+
+	# Check if the current theme is "Nintendo GameCube"
+	elif current_theme == theme.NintendoGameCube:
+		touch_screen_button_down.modulate = BTN_SECONDARY
+		touch_screen_button_up.modulate = BTN_SECONDARY
+		touch_screen_button_left.modulate = BTN_SECONDARY
+		touch_screen_button_right.modulate = BTN_SECONDARY
+		touch_screen_button_a.modulate = BTN_SUCCESS
+		touch_screen_button_b.modulate = BTN_DANGER
+		touch_screen_button_x.modulate = BTN_SECONDARY
+		touch_screen_button_y.modulate = BTN_SECONDARY
+		touch_screen_button_select.visible = false
+		touch_screen_button_start.modulate = BTN_SECONDARY
+		touch_screen_button_l_1.modulate = BTN_SECONDARY
+		touch_screen_button_l_2.modulate = BTN_SECONDARY
+		touch_screen_button_r_1.modulate = BTN_SECONDARY
+		touch_screen_button_r_2.modulate = BTN_SECONDARY
+
+	# Check if the current theme is "Super Nintendo Entertainment System"
+	elif current_theme == theme.SuperNintendoEntertainmentSystem:
+		touch_screen_button_down.modulate = BTN_DARK
+		touch_screen_button_up.modulate = BTN_DARK
+		touch_screen_button_left.modulate = BTN_DARK
+		touch_screen_button_right.modulate = BTN_DARK
+		touch_screen_button_a.modulate = OLD_BV
+		touch_screen_button_b.modulate = OLD_BV
+		touch_screen_button_x.modulate = BD_NAVBAR
+		touch_screen_button_y.modulate = BD_NAVBAR
+		touch_screen_button_select.modulate = BTN_DARK
+		touch_screen_button_start.modulate = BTN_DARK
+		touch_screen_button_l_1.modulate = BTN_SECONDARY
+		touch_screen_button_l_2.visible = false
+		touch_screen_button_r_1.modulate = BTN_SECONDARY
+		touch_screen_button_r_2.visible = false
 
 
 ## Checks if a given position is within any TouchScreenButton.

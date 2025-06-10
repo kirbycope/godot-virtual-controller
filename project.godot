@@ -13,7 +13,7 @@ config_version=5
 config/name="Virtual Controller"
 run/main_scene="uid://bes757mpanhex"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://xg2nvpqkq6hy"
 
 [display]
 
