@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bf7ao2r1en2cq" path="res://addons/virtual_controller/assets/textures/game_icons/PNG/White/2x/buttonA.png" id="1_dyvab"]
 [ext_resource type="Texture2D" uid="uid://gq6lwxhonocy" path="res://addons/virtual_controller/assets/textures/game_icons/PNG/Black/2x/buttonA.png" id="2_k0k70"]
 [ext_resource type="Texture2D" uid="uid://d17g6mlhk5xvx" path="res://addons/virtual_controller/assets/textures/game_icons/PNG/White/2x/buttonB.png" id="3_o41q3"]
-[ext_resource type="Texture2D" uid="uid://koptcqtseyee" path="res://addons/virtual_controller/assets/textures/game_icons/PNG/White/1x/stop.png" id="3_uwa31"]
+[ext_resource type="Texture2D" uid="uid://bmecj5vv0gewh" path="res://addons/virtual_controller/assets/textures/game_icons/PNG/Black/1x/stop.png" id="3_uwa31"]
 [ext_resource type="Texture2D" uid="uid://brdf0o13vm14t" path="res://addons/virtual_controller/assets/textures/game_icons/PNG/Black/2x/buttonB.png" id="4_3qn5a"]
 [ext_resource type="Texture2D" uid="uid://cw26jjwephqik" path="res://addons/virtual_controller/assets/textures/game_icons/PNG/White/2x/buttonX.png" id="5_aort8"]
 [ext_resource type="Texture2D" uid="uid://bbpqtu1ugpnis" path="res://addons/virtual_controller/assets/textures/game_icons/PNG/Black/2x/buttonX.png" id="6_o41q3"]
