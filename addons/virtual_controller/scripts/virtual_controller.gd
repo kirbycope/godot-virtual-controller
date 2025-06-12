@@ -45,12 +45,16 @@ var tap_initial_position = null
 @onready var touch_screen_button_up: TouchScreenButton = $"../VirtualButtons/VirtualButtonsBottomLeft/TouchScreenButtonUp"
 @onready var touch_screen_button_select: TouchScreenButton = $"../VirtualButtons/VirtualButtonsBottomLeft/TouchScreenButtonSelect"
 @onready var touch_screen_button_a: TouchScreenButton = $"../VirtualButtons/VirtualButtonsBottomRight/TouchScreenButtonA"
+@onready var touch_screen_button_a_background: Sprite2D = $"../VirtualButtons/VirtualButtonsBottomRight/TouchScreenButtonA/Background"
 @onready var touch_screen_button_a_initial_position := touch_screen_button_a.position
 @onready var touch_screen_button_b: TouchScreenButton = $"../VirtualButtons/VirtualButtonsBottomRight/TouchScreenButtonB"
+@onready var touch_screen_button_b_background: Sprite2D = $"../VirtualButtons/VirtualButtonsBottomRight/TouchScreenButtonB/Background"
 @onready var touch_screen_button_b_initial_position := touch_screen_button_b.position
 @onready var touch_screen_button_x: TouchScreenButton = $"../VirtualButtons/VirtualButtonsBottomRight/TouchScreenButtonX"
+@onready var touch_screen_button_x_background: Sprite2D = $"../VirtualButtons/VirtualButtonsBottomRight/TouchScreenButtonX/Background"
 @onready var touch_screen_button_x_initial_position := touch_screen_button_x.position
 @onready var touch_screen_button_y: TouchScreenButton = $"../VirtualButtons/VirtualButtonsBottomRight/TouchScreenButtonY"
+@onready var touch_screen_button_y_background: Sprite2D = $"../VirtualButtons/VirtualButtonsBottomRight/TouchScreenButtonY/Background"
 @onready var touch_screen_button_y_initial_position := touch_screen_button_y.position
 @onready var touch_screen_button_start: TouchScreenButton = $"../VirtualButtons/VirtualButtonsBottomRight/TouchScreenButtonStart"
 @onready var touch_screen_button_l_1: TouchScreenButton = $"../VirtualButtons/VirtualButtonsTopLeft/TouchScreenButtonL1"
@@ -370,12 +374,20 @@ func update_theme(new_theme: theme) -> void:
 	touch_screen_button_select.modulate = Color(1, 1, 1, 1)
 	touch_screen_button_a.show()
 	touch_screen_button_a.modulate = Color(1, 1, 1, 1)
+	touch_screen_button_a_background.modulate = Color(0, 0, 0, 1)
+	touch_screen_button_a.position = touch_screen_button_a_initial_position
 	touch_screen_button_b.show()
 	touch_screen_button_b.modulate = Color(1, 1, 1, 1)
+	touch_screen_button_b_background.modulate = Color(0, 0, 0, 1)
+	touch_screen_button_b.position = touch_screen_button_b_initial_position
 	touch_screen_button_x.show()
 	touch_screen_button_x.modulate = Color(1, 1, 1, 1)
+	touch_screen_button_x_background.modulate = Color(0, 0, 0, 1)
+	touch_screen_button_x.position = touch_screen_button_x_initial_position
 	touch_screen_button_y.show()
 	touch_screen_button_y.modulate = Color(1, 1, 1, 1)
+	touch_screen_button_y_background.modulate = Color(0, 0, 0, 1)
+	touch_screen_button_y.position = touch_screen_button_y_initial_position
 	touch_screen_button_start.show()
 	touch_screen_button_start.modulate = Color(1, 1, 1, 1)
 	touch_screen_button_l_1.show()
@@ -394,6 +406,10 @@ func update_theme(new_theme: theme) -> void:
 		touch_screen_button_b.modulate = BTN_WARNING
 		touch_screen_button_x.modulate = BTN_PRIMARY
 		touch_screen_button_y.modulate = BTN_SUCCESS
+		touch_screen_button_a_background.modulate = Color(1, 1, 1, 1)
+		touch_screen_button_b_background.modulate = Color(1, 1, 1, 1)
+		touch_screen_button_x_background.modulate = Color(1, 1, 1, 1)
+		touch_screen_button_y_background.modulate = Color(1, 1, 1, 1)
 		touch_screen_button_a.position = touch_screen_button_b_initial_position
 		touch_screen_button_b.position = touch_screen_button_a_initial_position
 		touch_screen_button_x.position = touch_screen_button_y_initial_position
@@ -408,6 +424,8 @@ func update_theme(new_theme: theme) -> void:
 		touch_screen_button_right.modulate = BTN_DARK
 		touch_screen_button_a.modulate = BTN_PRIMARY
 		touch_screen_button_b.modulate = BTN_SUCCESS
+		touch_screen_button_a_background.modulate = Color(1, 1, 1, 1)
+		touch_screen_button_b_background.modulate = Color(1, 1, 1, 1)
 		touch_screen_button_x.visible = false
 		touch_screen_button_y.visible = false
 		touch_screen_button_select.visible = false
@@ -430,6 +448,8 @@ func update_theme(new_theme: theme) -> void:
 		touch_screen_button_right.modulate = BTN_DARK
 		touch_screen_button_a.modulate = BTN_DANGER
 		touch_screen_button_b.modulate = BTN_DANGER
+		touch_screen_button_a_background.modulate = Color(1, 1, 1, 1)
+		touch_screen_button_b_background.modulate = Color(1, 1, 1, 1)
 		touch_screen_button_x.visible = false
 		touch_screen_button_y.visible = false
 		touch_screen_button_select.modulate = BTN_DARK
@@ -454,6 +474,10 @@ func update_theme(new_theme: theme) -> void:
 		touch_screen_button_b.modulate = BTN_DANGER
 		touch_screen_button_x.modulate = BTN_SECONDARY
 		touch_screen_button_y.modulate = BTN_SECONDARY
+		touch_screen_button_a_background.modulate = Color(1, 1, 1, 1)
+		touch_screen_button_b_background.modulate = Color(1, 1, 1, 1)
+		touch_screen_button_x_background.modulate = Color(1, 1, 1, 1)
+		touch_screen_button_y_background.modulate = Color(1, 1, 1, 1)
 		touch_screen_button_select.visible = false
 		touch_screen_button_start.modulate = BTN_SECONDARY
 		touch_screen_button_l_1.modulate = BTN_SECONDARY
@@ -476,6 +500,10 @@ func update_theme(new_theme: theme) -> void:
 		touch_screen_button_b.modulate = OLD_BV
 		touch_screen_button_x.modulate = BD_NAVBAR
 		touch_screen_button_y.modulate = BD_NAVBAR
+		touch_screen_button_a_background.modulate = Color(1, 1, 1, 1)
+		touch_screen_button_b_background.modulate = Color(1, 1, 1, 1)
+		touch_screen_button_x_background.modulate = Color(1, 1, 1, 1)
+		touch_screen_button_y_background.modulate = Color(1, 1, 1, 1)
 		touch_screen_button_select.modulate = BTN_DARK
 		touch_screen_button_start.modulate = BTN_DARK
 		touch_screen_button_l_1.modulate = BTN_SECONDARY
