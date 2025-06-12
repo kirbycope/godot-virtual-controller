@@ -289,6 +289,11 @@ func _input(event: InputEvent) -> void:
 	queue_redraw()
 
 
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	update_theme(theme.DEFAULT)
+
+
 ## Checks if a given position is within any TouchScreenButton.
 func is_touch_on_button(event_position: Vector2) -> bool:
 
@@ -363,53 +368,53 @@ func update_theme(new_theme: theme) -> void:
 	tap_event_index = null
 	tap_initial_position = null
 	touch_screen_button_down.show()
-	touch_screen_button_down.modulate = Color.WHITE
+	touch_screen_button_down.self_modulate = Color.WHITE
 	touch_screen_button_left.show()
-	touch_screen_button_left.modulate = Color.WHITE
+	touch_screen_button_left.self_modulate = Color.WHITE
 	touch_screen_button_right.show()
-	touch_screen_button_right.modulate = Color.WHITE
+	touch_screen_button_right.self_modulate = Color.WHITE
 	touch_screen_button_up.show()
-	touch_screen_button_up.modulate = Color.WHITE
+	touch_screen_button_up.self_modulate = Color.WHITE
 	touch_screen_button_select.show()
-	touch_screen_button_select.modulate = Color.WHITE
+	touch_screen_button_select.self_modulate = Color.WHITE
 	touch_screen_button_a.show()
-	touch_screen_button_a.modulate = Color.WHITE
-	touch_screen_button_a_background.modulate = Color.BLACK
+	touch_screen_button_a.self_modulate = Color.WHITE
+	touch_screen_button_a_background.self_modulate = BTN_SUCCESS
 	touch_screen_button_a.position = touch_screen_button_a_initial_position
 	touch_screen_button_b.show()
-	touch_screen_button_b.modulate = Color.WHITE
-	touch_screen_button_b_background.modulate = Color.BLACK
+	touch_screen_button_b.self_modulate = Color.WHITE
+	touch_screen_button_b_background.self_modulate = BTN_DANGER
 	touch_screen_button_b.position = touch_screen_button_b_initial_position
 	touch_screen_button_x.show()
-	touch_screen_button_x.modulate = Color.WHITE
-	touch_screen_button_x_background.modulate = Color.BLACK
+	touch_screen_button_x.self_modulate = Color.WHITE
+	touch_screen_button_x_background.self_modulate = BTN_PRIMARY
 	touch_screen_button_x.position = touch_screen_button_x_initial_position
 	touch_screen_button_y.show()
-	touch_screen_button_y.modulate = Color.WHITE
-	touch_screen_button_y_background.modulate = Color.BLACK
+	touch_screen_button_y.self_modulate = Color.WHITE
+	touch_screen_button_y_background.self_modulate = BTN_WARNING
 	touch_screen_button_y.position = touch_screen_button_y_initial_position
 	touch_screen_button_start.show()
-	touch_screen_button_start.modulate = Color.WHITE
+	touch_screen_button_start.self_modulate = Color.WHITE
 	touch_screen_button_l_1.show()
-	touch_screen_button_l_1.modulate = Color.WHITE
+	touch_screen_button_l_1.self_modulate = Color.WHITE
 	touch_screen_button_l_2.show()
-	touch_screen_button_l_2.modulate = Color.WHITE
+	touch_screen_button_l_2.self_modulate = Color.WHITE
 	touch_screen_button_r_1.show()
-	touch_screen_button_r_1.modulate = Color.WHITE
+	touch_screen_button_r_1.self_modulate = Color.WHITE
 	touch_screen_button_r_2.show()
-	touch_screen_button_r_2.modulate = Color.WHITE
+	touch_screen_button_r_2.self_modulate = Color.WHITE
 
 	# Check if the current theme is "New Nintendo 3DS"
 	if current_theme == theme.NewNintendo3DS:
 		enable_analog_sticks = true
-		touch_screen_button_a.modulate = BTN_DANGER
-		touch_screen_button_b.modulate = BTN_WARNING
-		touch_screen_button_x.modulate = BTN_PRIMARY
-		touch_screen_button_y.modulate = BTN_SUCCESS
-		touch_screen_button_a_background.modulate = Color.WHITE
-		touch_screen_button_b_background.modulate = Color.WHITE
-		touch_screen_button_x_background.modulate = Color.WHITE
-		touch_screen_button_y_background.modulate = Color.WHITE
+		touch_screen_button_a.self_modulate = BTN_DANGER
+		touch_screen_button_b.self_modulate = BTN_WARNING
+		touch_screen_button_x.self_modulate = BTN_PRIMARY
+		touch_screen_button_y.self_modulate = BTN_SUCCESS
+		touch_screen_button_a_background.self_modulate = Color.WHITE
+		touch_screen_button_b_background.self_modulate = Color.WHITE
+		touch_screen_button_x_background.self_modulate = Color.WHITE
+		touch_screen_button_y_background.self_modulate = Color.WHITE
 		touch_screen_button_a.position = touch_screen_button_b_initial_position
 		touch_screen_button_b.position = touch_screen_button_a_initial_position
 		touch_screen_button_x.position = touch_screen_button_y_initial_position
@@ -418,22 +423,22 @@ func update_theme(new_theme: theme) -> void:
 	# Check if the current theme is "Nintendo 64"
 	elif current_theme == theme.Nintendo64:
 		enable_analog_sticks = true
-		touch_screen_button_down.modulate = BTN_DARK
-		touch_screen_button_up.modulate = BTN_DARK
-		touch_screen_button_left.modulate = BTN_DARK
-		touch_screen_button_right.modulate = BTN_DARK
-		touch_screen_button_a.modulate = BTN_PRIMARY
-		touch_screen_button_b.modulate = BTN_SUCCESS
-		touch_screen_button_a_background.modulate = Color.GRAY
-		touch_screen_button_b_background.modulate = Color.GRAY
+		touch_screen_button_down.self_modulate = BTN_DARK
+		touch_screen_button_up.self_modulate = BTN_DARK
+		touch_screen_button_left.self_modulate = BTN_DARK
+		touch_screen_button_right.self_modulate = BTN_DARK
+		touch_screen_button_a.self_modulate = BTN_PRIMARY
+		touch_screen_button_b.self_modulate = BTN_SUCCESS
+		touch_screen_button_a_background.self_modulate = Color.GRAY
+		touch_screen_button_b_background.self_modulate = Color.GRAY
 		touch_screen_button_x.visible = false
 		touch_screen_button_y.visible = false
 		touch_screen_button_select.visible = false
-		touch_screen_button_start.modulate = BTN_DANGER
-		touch_screen_button_l_1.modulate = BTN_DARK
-		touch_screen_button_l_2.modulate = BTN_DARK
-		touch_screen_button_r_1.modulate = BTN_DARK
-		touch_screen_button_r_2.modulate = BTN_DARK
+		touch_screen_button_start.self_modulate = BTN_DANGER
+		touch_screen_button_l_1.self_modulate = BTN_DARK
+		touch_screen_button_l_2.self_modulate = BTN_DARK
+		touch_screen_button_r_1.self_modulate = BTN_DARK
+		touch_screen_button_r_2.self_modulate = BTN_DARK
 		touch_screen_button_a.position = touch_screen_button_b_initial_position
 		touch_screen_button_b.position = touch_screen_button_a_initial_position
 		touch_screen_button_x.position = touch_screen_button_y_initial_position
@@ -442,18 +447,18 @@ func update_theme(new_theme: theme) -> void:
 	# Check if the current theme is "Nintendo Entertainment System"
 	elif current_theme == theme.NintendoEntertainmentSystem:
 		enable_analog_sticks = false
-		touch_screen_button_down.modulate = BTN_DARK
-		touch_screen_button_up.modulate = BTN_DARK
-		touch_screen_button_left.modulate = BTN_DARK
-		touch_screen_button_right.modulate = BTN_DARK
-		touch_screen_button_a.modulate = BTN_DANGER
-		touch_screen_button_b.modulate = BTN_DANGER
-		touch_screen_button_a_background.modulate = Color.BLACK
-		touch_screen_button_b_background.modulate = Color.BLACK
+		touch_screen_button_down.self_modulate = BTN_DARK
+		touch_screen_button_up.self_modulate = BTN_DARK
+		touch_screen_button_left.self_modulate = BTN_DARK
+		touch_screen_button_right.self_modulate = BTN_DARK
+		touch_screen_button_a.self_modulate = BTN_DANGER
+		touch_screen_button_b.self_modulate = BTN_DANGER
+		touch_screen_button_a_background.self_modulate = Color.BLACK
+		touch_screen_button_b_background.self_modulate = Color.BLACK
 		touch_screen_button_x.visible = false
 		touch_screen_button_y.visible = false
-		touch_screen_button_select.modulate = BTN_DARK
-		touch_screen_button_start.modulate = BTN_DARK
+		touch_screen_button_select.self_modulate = BTN_DARK
+		touch_screen_button_start.self_modulate = BTN_DARK
 		touch_screen_button_l_1.visible = false
 		touch_screen_button_l_2.visible = false
 		touch_screen_button_r_1.visible = false
@@ -466,24 +471,24 @@ func update_theme(new_theme: theme) -> void:
 	# Check if the current theme is "Nintendo GameCube"
 	elif current_theme == theme.NintendoGameCube:
 		enable_analog_sticks = true
-		touch_screen_button_down.modulate = BTN_SECONDARY
-		touch_screen_button_up.modulate = BTN_SECONDARY
-		touch_screen_button_left.modulate = BTN_SECONDARY
-		touch_screen_button_right.modulate = BTN_SECONDARY
-		touch_screen_button_a.modulate = BTN_SUCCESS
-		touch_screen_button_b.modulate = BTN_DANGER
-		touch_screen_button_x.modulate = BTN_SECONDARY
-		touch_screen_button_y.modulate = BTN_SECONDARY
-		touch_screen_button_a_background.modulate = Color.BLACK
-		touch_screen_button_b_background.modulate = Color.BLACK
-		touch_screen_button_x_background.modulate = Color.BLACK
-		touch_screen_button_y_background.modulate = Color.BLACK
+		touch_screen_button_down.self_modulate = BTN_SECONDARY
+		touch_screen_button_up.self_modulate = BTN_SECONDARY
+		touch_screen_button_left.self_modulate = BTN_SECONDARY
+		touch_screen_button_right.self_modulate = BTN_SECONDARY
+		touch_screen_button_a.self_modulate = BTN_SUCCESS
+		touch_screen_button_b.self_modulate = BTN_DANGER
+		touch_screen_button_x.self_modulate = BTN_SECONDARY
+		touch_screen_button_y.self_modulate = BTN_SECONDARY
+		touch_screen_button_a_background.self_modulate = Color.BLACK
+		touch_screen_button_b_background.self_modulate = Color.BLACK
+		touch_screen_button_x_background.self_modulate = Color.BLACK
+		touch_screen_button_y_background.self_modulate = Color.BLACK
 		touch_screen_button_select.visible = false
-		touch_screen_button_start.modulate = BTN_SECONDARY
-		touch_screen_button_l_1.modulate = BTN_SECONDARY
-		touch_screen_button_l_2.modulate = BTN_SECONDARY
-		touch_screen_button_r_1.modulate = BTN_SECONDARY
-		touch_screen_button_r_2.modulate = BTN_SECONDARY
+		touch_screen_button_start.self_modulate = BTN_SECONDARY
+		touch_screen_button_l_1.self_modulate = BTN_SECONDARY
+		touch_screen_button_l_2.self_modulate = BTN_SECONDARY
+		touch_screen_button_r_1.self_modulate = BTN_SECONDARY
+		touch_screen_button_r_2.self_modulate = BTN_SECONDARY
 		touch_screen_button_a.position = touch_screen_button_b_initial_position
 		touch_screen_button_b.position = touch_screen_button_a_initial_position
 		touch_screen_button_x.position = touch_screen_button_y_initial_position
@@ -492,23 +497,23 @@ func update_theme(new_theme: theme) -> void:
 	# Check if the current theme is "Super Nintendo Entertainment System"
 	elif current_theme == theme.SuperNintendoEntertainmentSystem:
 		enable_analog_sticks = false
-		touch_screen_button_down.modulate = BTN_DARK
-		touch_screen_button_up.modulate = BTN_DARK
-		touch_screen_button_left.modulate = BTN_DARK
-		touch_screen_button_right.modulate = BTN_DARK
-		touch_screen_button_a.modulate = OLD_BV
-		touch_screen_button_b.modulate = OLD_BV
-		touch_screen_button_x.modulate = BD_NAVBAR
-		touch_screen_button_y.modulate = BD_NAVBAR
-		touch_screen_button_a_background.modulate = Color.GRAY
-		touch_screen_button_b_background.modulate = Color.GRAY
-		touch_screen_button_x_background.modulate = Color.GRAY
-		touch_screen_button_y_background.modulate = Color.GRAY
-		touch_screen_button_select.modulate = BTN_DARK
-		touch_screen_button_start.modulate = BTN_DARK
-		touch_screen_button_l_1.modulate = BTN_SECONDARY
+		touch_screen_button_down.self_modulate = BTN_DARK
+		touch_screen_button_up.self_modulate = BTN_DARK
+		touch_screen_button_left.self_modulate = BTN_DARK
+		touch_screen_button_right.self_modulate = BTN_DARK
+		touch_screen_button_a.self_modulate = OLD_BV
+		touch_screen_button_b.self_modulate = OLD_BV
+		touch_screen_button_x.self_modulate = BD_NAVBAR
+		touch_screen_button_y.self_modulate = BD_NAVBAR
+		touch_screen_button_a_background.self_modulate = Color.GRAY
+		touch_screen_button_b_background.self_modulate = Color.GRAY
+		touch_screen_button_x_background.self_modulate = Color.GRAY
+		touch_screen_button_y_background.self_modulate = Color.GRAY
+		touch_screen_button_select.self_modulate = BTN_DARK
+		touch_screen_button_start.self_modulate = BTN_DARK
+		touch_screen_button_l_1.self_modulate = BTN_SECONDARY
 		touch_screen_button_l_2.visible = false
-		touch_screen_button_r_1.modulate = BTN_SECONDARY
+		touch_screen_button_r_1.self_modulate = BTN_SECONDARY
 		touch_screen_button_r_2.visible = false
 		touch_screen_button_a.position = touch_screen_button_b_initial_position
 		touch_screen_button_b.position = touch_screen_button_a_initial_position
