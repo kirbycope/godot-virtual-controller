@@ -342,6 +342,22 @@ func update_theme(new_theme: theme) -> void:
 	# Update the current theme
 	current_theme = new_theme
 
+	# Reset the virtual controller state
+	touch_screen_button_down.show()
+	touch_screen_button_left.show()
+	touch_screen_button_right.show()
+	touch_screen_button_up.show()
+	touch_screen_button_select.show()
+	touch_screen_button_a.show()
+	touch_screen_button_b.show()
+	touch_screen_button_x.show()
+	touch_screen_button_y.show()
+	touch_screen_button_start.show()
+	touch_screen_button_l_1.show()
+	touch_screen_button_l_2.show()
+	touch_screen_button_r_1.show()
+	touch_screen_button_r_2.show()
+
 	# Check if the current theme is "New Nintendo 3DS"
 	if current_theme == theme.NewNintendo3DS:
 		enable_analog_sticks = true
