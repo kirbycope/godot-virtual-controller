@@ -1,7 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://bes757mpanhex"]
+[gd_scene load_steps=13 format=3 uid="uid://bes757mpanhex"]
 
 [ext_resource type="Script" uid="uid://d3qlweosjgyca" path="res://scripts/2d_test.gd" id="1_icpdp"]
 [ext_resource type="PackedScene" uid="uid://cx7x0f3lh4aus" path="res://addons/virtual_controller/scenes/canvas_layer.tscn" id="1_l41ob"]
+[ext_resource type="Texture2D" uid="uid://cdexd85b4iuer" path="res://assets/nes.png" id="3_5c1e3"]
+[ext_resource type="Texture2D" uid="uid://c1h0768kp8rgn" path="res://assets/snes.png" id="4_2xjc5"]
+[ext_resource type="Texture2D" uid="uid://caitflv23lisg" path="res://assets/n64.png" id="5_qkja4"]
+[ext_resource type="Texture2D" uid="uid://f8okt18oq6gy" path="res://assets/ngc.png" id="6_ewn47"]
+[ext_resource type="Texture2D" uid="uid://cllknlc1gent1" path="res://assets/3ds.png" id="7_u6ury"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5c1e3"]
+font_size = 32
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5c1e3"]
+size = Vector2(149, 146)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2xjc5"]
+size = Vector2(149, 146)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qkja4"]
+size = Vector2(154, 146)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ewn47"]
+size = Vector2(170, 146)
 
 [node name="2dTest" type="Node2D"]
 script = ExtResource("1_icpdp")
@@ -18,17 +38,17 @@ offset_bottom = 720.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Control"]
+[node name="Action" type="Label" parent="Control"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -51.0
-offset_top = -11.5
-offset_right = -1.0
-offset_bottom = 11.5
+offset_left = -99.0
+offset_top = 92.5
+offset_right = -49.0
+offset_bottom = 115.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Action"
@@ -40,10 +60,89 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 2.0
-offset_top = -17.5
-offset_right = 130.0
-offset_bottom = 18.5
+offset_left = -46.0
+offset_top = 86.5
+offset_right = 82.0
+offset_bottom = 122.5
 grow_horizontal = 2
 grow_vertical = 2
 scroll_fit_content_height = true
+
+[node name="Theme" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -118.0
+offset_top = 230.0
+offset_right = 118.0
+offset_bottom = 275.0
+grow_horizontal = 2
+text = "Select a theme:"
+label_settings = SubResource("LabelSettings_5c1e3")
+
+[node name="HFlowContainer" type="HFlowContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -73.0
+offset_right = 640.0
+offset_bottom = 73.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="NES" type="TextureButton" parent="Control/HFlowContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_5c1e3")
+
+[node name="NES" type="TouchScreenButton" parent="Control/HFlowContainer/NES"]
+position = Vector2(75, 73)
+shape = SubResource("RectangleShape2D_5c1e3")
+
+[node name="SNES" type="TextureButton" parent="Control/HFlowContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_2xjc5")
+
+[node name="SNES" type="TouchScreenButton" parent="Control/HFlowContainer/SNES"]
+position = Vector2(75, 73)
+shape = SubResource("RectangleShape2D_2xjc5")
+
+[node name="N64" type="TextureButton" parent="Control/HFlowContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_qkja4")
+
+[node name="N64" type="TouchScreenButton" parent="Control/HFlowContainer/N64"]
+position = Vector2(76, 73)
+shape = SubResource("RectangleShape2D_qkja4")
+
+[node name="NGC" type="TextureButton" parent="Control/HFlowContainer"]
+layout_mode = 2
+texture_normal = ExtResource("6_ewn47")
+
+[node name="NGC" type="TouchScreenButton" parent="Control/HFlowContainer/NGC"]
+position = Vector2(85, 73)
+shape = SubResource("RectangleShape2D_ewn47")
+
+[node name="N3DS" type="TextureButton" parent="Control/HFlowContainer"]
+layout_mode = 2
+texture_normal = ExtResource("7_u6ury")
+
+[node name="N3DS" type="TouchScreenButton" parent="Control/HFlowContainer/N3DS"]
+position = Vector2(74, 73)
+shape = SubResource("RectangleShape2D_5c1e3")
+
+[connection signal="pressed" from="Control/HFlowContainer/NES" to="." method="_on_nes_pressed"]
+[connection signal="pressed" from="Control/HFlowContainer/NES/NES" to="." method="_on_nes_pressed"]
+[connection signal="pressed" from="Control/HFlowContainer/SNES" to="." method="_on_snes_pressed"]
+[connection signal="pressed" from="Control/HFlowContainer/SNES/SNES" to="." method="_on_snes_pressed"]
+[connection signal="pressed" from="Control/HFlowContainer/N64" to="." method="_on_n_64_pressed"]
+[connection signal="pressed" from="Control/HFlowContainer/N64/N64" to="." method="_on_n_64_pressed"]
+[connection signal="pressed" from="Control/HFlowContainer/NGC" to="." method="_on_ngc_pressed"]
+[connection signal="pressed" from="Control/HFlowContainer/NGC/NGC" to="." method="_on_ngc_pressed"]
+[connection signal="pressed" from="Control/HFlowContainer/N3DS" to="." method="_on_n_3ds_pressed"]
+[connection signal="pressed" from="Control/HFlowContainer/N3DS/N3DS" to="." method="_on_n_3ds_pressed"]

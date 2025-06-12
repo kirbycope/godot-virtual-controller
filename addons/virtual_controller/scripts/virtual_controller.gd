@@ -58,8 +58,6 @@ var tap_initial_position = null
 ## Called when CanvasItem has been requested to redraw (after queue_redraw is called, either manually or by the engine).
 func _draw() -> void:
 
-
-
 	# Check if there is a left-swipe event
 	if left_swipe_event_index != null:
 
@@ -283,85 +281,6 @@ func _input(event: InputEvent) -> void:
 	queue_redraw()
 
 
-## Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-
-	# Check if the current theme is "New Nintendo 3DS"
-	if current_theme == theme.NewNintendo3DS:
-		touch_screen_button_a.modulate = BTN_DANGER
-		touch_screen_button_b.modulate = BTN_WARNING
-		touch_screen_button_x.modulate = BTN_PRIMARY
-		touch_screen_button_y.modulate = BTN_SUCCESS
-
-	# Check if the current theme is "Nintendo 64"
-	elif current_theme == theme.Nintendo64:
-		touch_screen_button_down.modulate = BTN_DARK
-		touch_screen_button_up.modulate = BTN_DARK
-		touch_screen_button_left.modulate = BTN_DARK
-		touch_screen_button_right.modulate = BTN_DARK
-		touch_screen_button_a.modulate = BTN_PRIMARY
-		touch_screen_button_b.modulate = BTN_SUCCESS
-		touch_screen_button_x.visible = false
-		touch_screen_button_y.visible = false
-		touch_screen_button_select.visible = false
-		touch_screen_button_start.modulate = BTN_DANGER
-		touch_screen_button_l_1.modulate = BTN_DARK
-		touch_screen_button_l_2.modulate = BTN_DARK
-		touch_screen_button_r_1.modulate = BTN_DARK
-		touch_screen_button_r_2.modulate = BTN_DARK
-
-	# Check if the current theme is "Nintendo Entertainment System"
-	elif current_theme == theme.NintendoEntertainmentSystem:
-		touch_screen_button_down.modulate = BTN_DARK
-		touch_screen_button_up.modulate = BTN_DARK
-		touch_screen_button_left.modulate = BTN_DARK
-		touch_screen_button_right.modulate = BTN_DARK
-		touch_screen_button_a.modulate = BTN_DANGER
-		touch_screen_button_b.modulate = BTN_DANGER
-		touch_screen_button_x.visible = false
-		touch_screen_button_y.visible = false
-		touch_screen_button_select.modulate = BTN_DARK
-		touch_screen_button_start.modulate = BTN_DARK
-		touch_screen_button_l_1.visible = false
-		touch_screen_button_l_2.visible = false
-		touch_screen_button_r_1.visible = false
-		touch_screen_button_r_2.visible = false
-
-	# Check if the current theme is "Nintendo GameCube"
-	elif current_theme == theme.NintendoGameCube:
-		touch_screen_button_down.modulate = BTN_SECONDARY
-		touch_screen_button_up.modulate = BTN_SECONDARY
-		touch_screen_button_left.modulate = BTN_SECONDARY
-		touch_screen_button_right.modulate = BTN_SECONDARY
-		touch_screen_button_a.modulate = BTN_SUCCESS
-		touch_screen_button_b.modulate = BTN_DANGER
-		touch_screen_button_x.modulate = BTN_SECONDARY
-		touch_screen_button_y.modulate = BTN_SECONDARY
-		touch_screen_button_select.visible = false
-		touch_screen_button_start.modulate = BTN_SECONDARY
-		touch_screen_button_l_1.modulate = BTN_SECONDARY
-		touch_screen_button_l_2.modulate = BTN_SECONDARY
-		touch_screen_button_r_1.modulate = BTN_SECONDARY
-		touch_screen_button_r_2.modulate = BTN_SECONDARY
-
-	# Check if the current theme is "Super Nintendo Entertainment System"
-	elif current_theme == theme.SuperNintendoEntertainmentSystem:
-		touch_screen_button_down.modulate = BTN_DARK
-		touch_screen_button_up.modulate = BTN_DARK
-		touch_screen_button_left.modulate = BTN_DARK
-		touch_screen_button_right.modulate = BTN_DARK
-		touch_screen_button_a.modulate = OLD_BV
-		touch_screen_button_b.modulate = OLD_BV
-		touch_screen_button_x.modulate = BD_NAVBAR
-		touch_screen_button_y.modulate = BD_NAVBAR
-		touch_screen_button_select.modulate = BTN_DARK
-		touch_screen_button_start.modulate = BTN_DARK
-		touch_screen_button_l_1.modulate = BTN_SECONDARY
-		touch_screen_button_l_2.visible = false
-		touch_screen_button_r_1.modulate = BTN_SECONDARY
-		touch_screen_button_r_2.visible = false
-
-
 ## Checks if a given position is within any TouchScreenButton.
 func is_touch_on_button(event_position: Vector2) -> bool:
 
@@ -415,3 +334,93 @@ func update_button_passthrough():
 	touch_screen_button_y.passby_press = should_passthrough
 	touch_screen_button_r_1.passby_press = should_passthrough
 	touch_screen_button_r_2.passby_press = should_passthrough
+
+
+## Updates the theme of the virtual controller.
+func update_theme(new_theme: theme) -> void:
+
+	# Update the current theme
+	current_theme = new_theme
+
+	# Check if the current theme is "New Nintendo 3DS"
+	if current_theme == theme.NewNintendo3DS:
+		enable_analog_sticks = true
+		touch_screen_button_a.modulate = BTN_DANGER
+		touch_screen_button_b.modulate = BTN_WARNING
+		touch_screen_button_x.modulate = BTN_PRIMARY
+		touch_screen_button_y.modulate = BTN_SUCCESS
+
+	# Check if the current theme is "Nintendo 64"
+	elif current_theme == theme.Nintendo64:
+		enable_analog_sticks = true
+		touch_screen_button_down.modulate = BTN_DARK
+		touch_screen_button_up.modulate = BTN_DARK
+		touch_screen_button_left.modulate = BTN_DARK
+		touch_screen_button_right.modulate = BTN_DARK
+		touch_screen_button_a.modulate = BTN_PRIMARY
+		touch_screen_button_b.modulate = BTN_SUCCESS
+		touch_screen_button_x.visible = false
+		touch_screen_button_y.visible = false
+		touch_screen_button_select.visible = false
+		touch_screen_button_start.modulate = BTN_DANGER
+		touch_screen_button_l_1.modulate = BTN_DARK
+		touch_screen_button_l_2.modulate = BTN_DARK
+		touch_screen_button_r_1.modulate = BTN_DARK
+		touch_screen_button_r_2.modulate = BTN_DARK
+
+	# Check if the current theme is "Nintendo Entertainment System"
+	elif current_theme == theme.NintendoEntertainmentSystem:
+		enable_analog_sticks = false
+		touch_screen_button_down.modulate = BTN_DARK
+		touch_screen_button_up.modulate = BTN_DARK
+		touch_screen_button_left.modulate = BTN_DARK
+		touch_screen_button_right.modulate = BTN_DARK
+		touch_screen_button_a.modulate = BTN_DANGER
+		touch_screen_button_b.modulate = BTN_DANGER
+		touch_screen_button_x.visible = false
+		touch_screen_button_y.visible = false
+		touch_screen_button_select.modulate = BTN_DARK
+		touch_screen_button_start.modulate = BTN_DARK
+		touch_screen_button_l_1.visible = false
+		touch_screen_button_l_2.visible = false
+		touch_screen_button_r_1.visible = false
+		touch_screen_button_r_2.visible = false
+
+	# Check if the current theme is "Nintendo GameCube"
+	elif current_theme == theme.NintendoGameCube:
+		enable_analog_sticks = true
+		touch_screen_button_down.modulate = BTN_SECONDARY
+		touch_screen_button_up.modulate = BTN_SECONDARY
+		touch_screen_button_left.modulate = BTN_SECONDARY
+		touch_screen_button_right.modulate = BTN_SECONDARY
+		touch_screen_button_a.modulate = BTN_SUCCESS
+		touch_screen_button_b.modulate = BTN_DANGER
+		touch_screen_button_x.modulate = BTN_SECONDARY
+		touch_screen_button_y.modulate = BTN_SECONDARY
+		touch_screen_button_select.visible = false
+		touch_screen_button_start.modulate = BTN_SECONDARY
+		touch_screen_button_l_1.modulate = BTN_SECONDARY
+		touch_screen_button_l_2.modulate = BTN_SECONDARY
+		touch_screen_button_r_1.modulate = BTN_SECONDARY
+		touch_screen_button_r_2.modulate = BTN_SECONDARY
+
+	# Check if the current theme is "Super Nintendo Entertainment System"
+	elif current_theme == theme.SuperNintendoEntertainmentSystem:
+		enable_analog_sticks = false
+		touch_screen_button_down.modulate = BTN_DARK
+		touch_screen_button_up.modulate = BTN_DARK
+		touch_screen_button_left.modulate = BTN_DARK
+		touch_screen_button_right.modulate = BTN_DARK
+		touch_screen_button_a.modulate = OLD_BV
+		touch_screen_button_b.modulate = OLD_BV
+		touch_screen_button_x.modulate = BD_NAVBAR
+		touch_screen_button_y.modulate = BD_NAVBAR
+		touch_screen_button_select.modulate = BTN_DARK
+		touch_screen_button_start.modulate = BTN_DARK
+		touch_screen_button_l_1.modulate = BTN_SECONDARY
+		touch_screen_button_l_2.visible = false
+		touch_screen_button_r_1.modulate = BTN_SECONDARY
+		touch_screen_button_r_2.visible = false
+
+	# Redraw canvas items via `_draw()`
+	queue_redraw()

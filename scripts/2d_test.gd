@@ -3,6 +3,7 @@ extends Node2D
 # Script for the test scene.
 
 @onready var text_edit: TextEdit = $Control/TextEdit
+@onready var virtual_controller: Node2D = $Controls/VirtualController
 
 
 ## Set the current input type.
@@ -25,3 +26,28 @@ func _input(event: InputEvent) -> void:
 
 				# Stop iterating through each of the actions
 				break
+
+
+## Handle "NES" button press.
+func _on_nes_pressed() -> void:
+	virtual_controller.update_theme(virtual_controller.theme.NintendoEntertainmentSystem)
+
+
+## Handle "SNES" button press.
+func _on_snes_pressed() -> void:
+	virtual_controller.update_theme(virtual_controller.theme.SuperNintendoEntertainmentSystem)
+
+
+## Handle "New 3DS" button press.
+func _on_n_3ds_pressed() -> void:
+	virtual_controller.update_theme(virtual_controller.theme.NewNintendo3DS)
+
+
+## Handle "N64" button press.
+func _on_n_64_pressed() -> void:
+	virtual_controller.update_theme(virtual_controller.theme.Nintendo64)
+
+
+## Handle "NGC" button press.
+func _on_ngc_pressed() -> void:
+	virtual_controller.update_theme(virtual_controller.theme.NintendoGameCube)
