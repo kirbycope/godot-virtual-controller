@@ -363,41 +363,41 @@ func update_theme(new_theme: theme) -> void:
 	tap_event_index = null
 	tap_initial_position = null
 	touch_screen_button_down.show()
-	touch_screen_button_down.modulate = Color(1, 1, 1, 1)
+	touch_screen_button_down.modulate = Color.WHITE
 	touch_screen_button_left.show()
-	touch_screen_button_left.modulate = Color(1, 1, 1, 1)
+	touch_screen_button_left.modulate = Color.WHITE
 	touch_screen_button_right.show()
-	touch_screen_button_right.modulate = Color(1, 1, 1, 1)
+	touch_screen_button_right.modulate = Color.WHITE
 	touch_screen_button_up.show()
-	touch_screen_button_up.modulate = Color(1, 1, 1, 1)
+	touch_screen_button_up.modulate = Color.WHITE
 	touch_screen_button_select.show()
-	touch_screen_button_select.modulate = Color(1, 1, 1, 1)
+	touch_screen_button_select.modulate = Color.WHITE
 	touch_screen_button_a.show()
-	touch_screen_button_a.modulate = Color(1, 1, 1, 1)
-	touch_screen_button_a_background.modulate = Color(0, 0, 0, 1)
+	touch_screen_button_a.modulate = Color.WHITE
+	touch_screen_button_a_background.modulate = Color.BLACK
 	touch_screen_button_a.position = touch_screen_button_a_initial_position
 	touch_screen_button_b.show()
-	touch_screen_button_b.modulate = Color(1, 1, 1, 1)
-	touch_screen_button_b_background.modulate = Color(0, 0, 0, 1)
+	touch_screen_button_b.modulate = Color.WHITE
+	touch_screen_button_b_background.modulate = Color.BLACK
 	touch_screen_button_b.position = touch_screen_button_b_initial_position
 	touch_screen_button_x.show()
-	touch_screen_button_x.modulate = Color(1, 1, 1, 1)
-	touch_screen_button_x_background.modulate = Color(0, 0, 0, 1)
+	touch_screen_button_x.modulate = Color.WHITE
+	touch_screen_button_x_background.modulate = Color.BLACK
 	touch_screen_button_x.position = touch_screen_button_x_initial_position
 	touch_screen_button_y.show()
-	touch_screen_button_y.modulate = Color(1, 1, 1, 1)
-	touch_screen_button_y_background.modulate = Color(0, 0, 0, 1)
+	touch_screen_button_y.modulate = Color.WHITE
+	touch_screen_button_y_background.modulate = Color.BLACK
 	touch_screen_button_y.position = touch_screen_button_y_initial_position
 	touch_screen_button_start.show()
-	touch_screen_button_start.modulate = Color(1, 1, 1, 1)
+	touch_screen_button_start.modulate = Color.WHITE
 	touch_screen_button_l_1.show()
-	touch_screen_button_l_1.modulate = Color(1, 1, 1, 1)
+	touch_screen_button_l_1.modulate = Color.WHITE
 	touch_screen_button_l_2.show()
-	touch_screen_button_l_2.modulate = Color(1, 1, 1, 1)
+	touch_screen_button_l_2.modulate = Color.WHITE
 	touch_screen_button_r_1.show()
-	touch_screen_button_r_1.modulate = Color(1, 1, 1, 1)
+	touch_screen_button_r_1.modulate = Color.WHITE
 	touch_screen_button_r_2.show()
-	touch_screen_button_r_2.modulate = Color(1, 1, 1, 1)
+	touch_screen_button_r_2.modulate = Color.WHITE
 
 	# Check if the current theme is "New Nintendo 3DS"
 	if current_theme == theme.NewNintendo3DS:
@@ -406,10 +406,10 @@ func update_theme(new_theme: theme) -> void:
 		touch_screen_button_b.modulate = BTN_WARNING
 		touch_screen_button_x.modulate = BTN_PRIMARY
 		touch_screen_button_y.modulate = BTN_SUCCESS
-		touch_screen_button_a_background.modulate = Color(1, 1, 1, 1)
-		touch_screen_button_b_background.modulate = Color(1, 1, 1, 1)
-		touch_screen_button_x_background.modulate = Color(1, 1, 1, 1)
-		touch_screen_button_y_background.modulate = Color(1, 1, 1, 1)
+		touch_screen_button_a_background.modulate = Color.WHITE
+		touch_screen_button_b_background.modulate = Color.WHITE
+		touch_screen_button_x_background.modulate = Color.WHITE
+		touch_screen_button_y_background.modulate = Color.WHITE
 		touch_screen_button_a.position = touch_screen_button_b_initial_position
 		touch_screen_button_b.position = touch_screen_button_a_initial_position
 		touch_screen_button_x.position = touch_screen_button_y_initial_position
@@ -424,8 +424,8 @@ func update_theme(new_theme: theme) -> void:
 		touch_screen_button_right.modulate = BTN_DARK
 		touch_screen_button_a.modulate = BTN_PRIMARY
 		touch_screen_button_b.modulate = BTN_SUCCESS
-		touch_screen_button_a_background.modulate = Color(1, 1, 1, 1)
-		touch_screen_button_b_background.modulate = Color(1, 1, 1, 1)
+		touch_screen_button_a_background.modulate = Color.GRAY
+		touch_screen_button_b_background.modulate = Color.GRAY
 		touch_screen_button_x.visible = false
 		touch_screen_button_y.visible = false
 		touch_screen_button_select.visible = false
@@ -448,8 +448,8 @@ func update_theme(new_theme: theme) -> void:
 		touch_screen_button_right.modulate = BTN_DARK
 		touch_screen_button_a.modulate = BTN_DANGER
 		touch_screen_button_b.modulate = BTN_DANGER
-		touch_screen_button_a_background.modulate = Color(1, 1, 1, 1)
-		touch_screen_button_b_background.modulate = Color(1, 1, 1, 1)
+		touch_screen_button_a_background.modulate = Color.BLACK
+		touch_screen_button_b_background.modulate = Color.BLACK
 		touch_screen_button_x.visible = false
 		touch_screen_button_y.visible = false
 		touch_screen_button_select.modulate = BTN_DARK
@@ -474,10 +474,10 @@ func update_theme(new_theme: theme) -> void:
 		touch_screen_button_b.modulate = BTN_DANGER
 		touch_screen_button_x.modulate = BTN_SECONDARY
 		touch_screen_button_y.modulate = BTN_SECONDARY
-		touch_screen_button_a_background.modulate = Color(1, 1, 1, 1)
-		touch_screen_button_b_background.modulate = Color(1, 1, 1, 1)
-		touch_screen_button_x_background.modulate = Color(1, 1, 1, 1)
-		touch_screen_button_y_background.modulate = Color(1, 1, 1, 1)
+		touch_screen_button_a_background.modulate = Color.BLACK
+		touch_screen_button_b_background.modulate = Color.BLACK
+		touch_screen_button_x_background.modulate = Color.BLACK
+		touch_screen_button_y_background.modulate = Color.BLACK
 		touch_screen_button_select.visible = false
 		touch_screen_button_start.modulate = BTN_SECONDARY
 		touch_screen_button_l_1.modulate = BTN_SECONDARY
@@ -500,10 +500,10 @@ func update_theme(new_theme: theme) -> void:
 		touch_screen_button_b.modulate = OLD_BV
 		touch_screen_button_x.modulate = BD_NAVBAR
 		touch_screen_button_y.modulate = BD_NAVBAR
-		touch_screen_button_a_background.modulate = Color(1, 1, 1, 1)
-		touch_screen_button_b_background.modulate = Color(1, 1, 1, 1)
-		touch_screen_button_x_background.modulate = Color(1, 1, 1, 1)
-		touch_screen_button_y_background.modulate = Color(1, 1, 1, 1)
+		touch_screen_button_a_background.modulate = Color.GRAY
+		touch_screen_button_b_background.modulate = Color.GRAY
+		touch_screen_button_x_background.modulate = Color.GRAY
+		touch_screen_button_y_background.modulate = Color.GRAY
 		touch_screen_button_select.modulate = BTN_DARK
 		touch_screen_button_start.modulate = BTN_DARK
 		touch_screen_button_l_1.modulate = BTN_SECONDARY
