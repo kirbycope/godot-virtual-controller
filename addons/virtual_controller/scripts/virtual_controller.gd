@@ -45,9 +45,13 @@ var tap_initial_position = null
 @onready var touch_screen_button_up: TouchScreenButton = $"../VirtualButtons/VirtualButtonsBottomLeft/TouchScreenButtonUp"
 @onready var touch_screen_button_select: TouchScreenButton = $"../VirtualButtons/VirtualButtonsBottomLeft/TouchScreenButtonSelect"
 @onready var touch_screen_button_a: TouchScreenButton = $"../VirtualButtons/VirtualButtonsBottomRight/TouchScreenButtonA"
+@onready var touch_screen_button_a_initial_position := touch_screen_button_a.position
 @onready var touch_screen_button_b: TouchScreenButton = $"../VirtualButtons/VirtualButtonsBottomRight/TouchScreenButtonB"
+@onready var touch_screen_button_b_initial_position := touch_screen_button_b.position
 @onready var touch_screen_button_x: TouchScreenButton = $"../VirtualButtons/VirtualButtonsBottomRight/TouchScreenButtonX"
+@onready var touch_screen_button_x_initial_position := touch_screen_button_x.position
 @onready var touch_screen_button_y: TouchScreenButton = $"../VirtualButtons/VirtualButtonsBottomRight/TouchScreenButtonY"
+@onready var touch_screen_button_y_initial_position := touch_screen_button_y.position
 @onready var touch_screen_button_start: TouchScreenButton = $"../VirtualButtons/VirtualButtonsBottomRight/TouchScreenButtonStart"
 @onready var touch_screen_button_l_1: TouchScreenButton = $"../VirtualButtons/VirtualButtonsTopLeft/TouchScreenButtonL1"
 @onready var touch_screen_button_l_2: TouchScreenButton = $"../VirtualButtons/VirtualButtonsTopLeft/TouchScreenButtonL2"
@@ -343,6 +347,17 @@ func update_theme(new_theme: theme) -> void:
 	current_theme = new_theme
 
 	# Reset the virtual controller state
+	left_swipe_current_position = null
+	left_swipe_event_index = null
+	left_swipe_delta = null
+	left_swipe_initial_position = null
+	right_swipe_current_position = null
+	right_swipe_event_index = null
+	right_swipe_delta = null
+	right_swipe_initial_position = null
+	right_touch_initial_time = null
+	tap_event_index = null
+	tap_initial_position = null
 	touch_screen_button_down.show()
 	touch_screen_button_left.show()
 	touch_screen_button_right.show()
@@ -365,6 +380,10 @@ func update_theme(new_theme: theme) -> void:
 		touch_screen_button_b.modulate = BTN_WARNING
 		touch_screen_button_x.modulate = BTN_PRIMARY
 		touch_screen_button_y.modulate = BTN_SUCCESS
+		touch_screen_button_a.position = touch_screen_button_b_initial_position
+		touch_screen_button_b.position = touch_screen_button_a_initial_position
+		touch_screen_button_x.position = touch_screen_button_y_initial_position
+		touch_screen_button_y.position = touch_screen_button_x_initial_position
 
 	# Check if the current theme is "Nintendo 64"
 	elif current_theme == theme.Nintendo64:
@@ -383,6 +402,10 @@ func update_theme(new_theme: theme) -> void:
 		touch_screen_button_l_2.modulate = BTN_DARK
 		touch_screen_button_r_1.modulate = BTN_DARK
 		touch_screen_button_r_2.modulate = BTN_DARK
+		touch_screen_button_a.position = touch_screen_button_b_initial_position
+		touch_screen_button_b.position = touch_screen_button_a_initial_position
+		touch_screen_button_x.position = touch_screen_button_y_initial_position
+		touch_screen_button_y.position = touch_screen_button_x_initial_position
 
 	# Check if the current theme is "Nintendo Entertainment System"
 	elif current_theme == theme.NintendoEntertainmentSystem:
@@ -401,6 +424,10 @@ func update_theme(new_theme: theme) -> void:
 		touch_screen_button_l_2.visible = false
 		touch_screen_button_r_1.visible = false
 		touch_screen_button_r_2.visible = false
+		touch_screen_button_a.position = touch_screen_button_b_initial_position
+		touch_screen_button_b.position = touch_screen_button_a_initial_position
+		touch_screen_button_x.position = touch_screen_button_y_initial_position
+		touch_screen_button_y.position = touch_screen_button_x_initial_position
 
 	# Check if the current theme is "Nintendo GameCube"
 	elif current_theme == theme.NintendoGameCube:
@@ -419,6 +446,10 @@ func update_theme(new_theme: theme) -> void:
 		touch_screen_button_l_2.modulate = BTN_SECONDARY
 		touch_screen_button_r_1.modulate = BTN_SECONDARY
 		touch_screen_button_r_2.modulate = BTN_SECONDARY
+		touch_screen_button_a.position = touch_screen_button_b_initial_position
+		touch_screen_button_b.position = touch_screen_button_a_initial_position
+		touch_screen_button_x.position = touch_screen_button_y_initial_position
+		touch_screen_button_y.position = touch_screen_button_x_initial_position
 
 	# Check if the current theme is "Super Nintendo Entertainment System"
 	elif current_theme == theme.SuperNintendoEntertainmentSystem:
@@ -437,6 +468,10 @@ func update_theme(new_theme: theme) -> void:
 		touch_screen_button_l_2.visible = false
 		touch_screen_button_r_1.modulate = BTN_SECONDARY
 		touch_screen_button_r_2.visible = false
+		touch_screen_button_a.position = touch_screen_button_b_initial_position
+		touch_screen_button_b.position = touch_screen_button_a_initial_position
+		touch_screen_button_x.position = touch_screen_button_y_initial_position
+		touch_screen_button_y.position = touch_screen_button_x_initial_position
 
 	# Redraw canvas items via `_draw()`
 	queue_redraw()

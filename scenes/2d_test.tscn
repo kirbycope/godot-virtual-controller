@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://bes757mpanhex"]
+[gd_scene load_steps=15 format=3 uid="uid://bes757mpanhex"]
 
 [ext_resource type="Script" uid="uid://d3qlweosjgyca" path="res://scripts/2d_test.gd" id="1_icpdp"]
 [ext_resource type="PackedScene" uid="uid://cx7x0f3lh4aus" path="res://addons/virtual_controller/scenes/canvas_layer.tscn" id="1_l41ob"]
+[ext_resource type="Texture2D" uid="uid://bh4stkedwko0s" path="res://assets/xbox.png" id="3_2xjc5"]
 [ext_resource type="Texture2D" uid="uid://cdexd85b4iuer" path="res://assets/nes.png" id="3_5c1e3"]
 [ext_resource type="Texture2D" uid="uid://c1h0768kp8rgn" path="res://assets/snes.png" id="4_2xjc5"]
 [ext_resource type="Texture2D" uid="uid://caitflv23lisg" path="res://assets/n64.png" id="5_qkja4"]
@@ -10,6 +11,9 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_5c1e3"]
 font_size = 32
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u6ury"]
+size = Vector2(185, 148)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5c1e3"]
 size = Vector2(149, 146)
@@ -96,6 +100,14 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
+[node name="XBox" type="TextureButton" parent="Control/HFlowContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_2xjc5")
+
+[node name="XBox" type="TouchScreenButton" parent="Control/HFlowContainer/XBox"]
+position = Vector2(94, 73)
+shape = SubResource("RectangleShape2D_u6ury")
+
 [node name="NES" type="TextureButton" parent="Control/HFlowContainer"]
 layout_mode = 2
 texture_normal = ExtResource("3_5c1e3")
@@ -136,6 +148,8 @@ texture_normal = ExtResource("7_u6ury")
 position = Vector2(74, 73)
 shape = SubResource("RectangleShape2D_5c1e3")
 
+[connection signal="pressed" from="Control/HFlowContainer/XBox" to="." method="_on_x_box_pressed"]
+[connection signal="pressed" from="Control/HFlowContainer/XBox/XBox" to="." method="_on_x_box_pressed"]
 [connection signal="pressed" from="Control/HFlowContainer/NES" to="." method="_on_nes_pressed"]
 [connection signal="pressed" from="Control/HFlowContainer/NES/NES" to="." method="_on_nes_pressed"]
 [connection signal="pressed" from="Control/HFlowContainer/SNES" to="." method="_on_snes_pressed"]

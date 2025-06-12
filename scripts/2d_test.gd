@@ -51,3 +51,7 @@ func _on_n_64_pressed() -> void:
 ## Handle "NGC" button press.
 func _on_ngc_pressed() -> void:
 	virtual_controller.update_theme(virtual_controller.theme.NintendoGameCube)
+
+## Handle "XBox" button press.
+func _on_x_box_pressed() -> void:
+	virtual_controller.update_theme(virtual_controller.theme.DEFAULT)
