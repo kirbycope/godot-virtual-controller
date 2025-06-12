@@ -359,19 +359,33 @@ func update_theme(new_theme: theme) -> void:
 	tap_event_index = null
 	tap_initial_position = null
 	touch_screen_button_down.show()
+	touch_screen_button_down.modulate = Color(1, 1, 1, 1)
 	touch_screen_button_left.show()
+	touch_screen_button_left.modulate = Color(1, 1, 1, 1)
 	touch_screen_button_right.show()
+	touch_screen_button_right.modulate = Color(1, 1, 1, 1)
 	touch_screen_button_up.show()
+	touch_screen_button_up.modulate = Color(1, 1, 1, 1)
 	touch_screen_button_select.show()
+	touch_screen_button_select.modulate = Color(1, 1, 1, 1)
 	touch_screen_button_a.show()
+	touch_screen_button_a.modulate = Color(1, 1, 1, 1)
 	touch_screen_button_b.show()
+	touch_screen_button_b.modulate = Color(1, 1, 1, 1)
 	touch_screen_button_x.show()
+	touch_screen_button_x.modulate = Color(1, 1, 1, 1)
 	touch_screen_button_y.show()
+	touch_screen_button_y.modulate = Color(1, 1, 1, 1)
 	touch_screen_button_start.show()
+	touch_screen_button_start.modulate = Color(1, 1, 1, 1)
 	touch_screen_button_l_1.show()
+	touch_screen_button_l_1.modulate = Color(1, 1, 1, 1)
 	touch_screen_button_l_2.show()
+	touch_screen_button_l_2.modulate = Color(1, 1, 1, 1)
 	touch_screen_button_r_1.show()
+	touch_screen_button_r_1.modulate = Color(1, 1, 1, 1)
 	touch_screen_button_r_2.show()
+	touch_screen_button_r_2.modulate = Color(1, 1, 1, 1)
 
 	# Check if the current theme is "New Nintendo 3DS"
 	if current_theme == theme.NewNintendo3DS:
