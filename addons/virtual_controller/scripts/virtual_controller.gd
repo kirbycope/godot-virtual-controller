@@ -12,6 +12,7 @@ enum theme {
 	SuperNintendoEntertainmentSystem,
 }
 
+const ALERT_WARNING = "#856404"	# YELLOW, DARK .alert-warning
 const BD_NAVBAR = "#563d7c"		# PURPLE, LIGHT .bd-navbar
 const BTN_DANGER = "#dc3545"	# RED .btn-danger
 const BTN_DARK = "#343a40"		# BLACK .btn-dark
@@ -101,8 +102,17 @@ func _draw() -> void:
 		# Define the position to draw the gray circle
 		var draw_position_gray =  right_swipe_initial_position
 
-		# Draw a gray circle at the event origin
-		draw_circle(draw_position_gray, 64, Color(0.502, 0.502, 0.502, 0.5))
+		# Check if the theme is Nintendo GameCube
+		if current_theme == theme.NintendoGameCube:
+
+			# Draw a dark yellow circle at the event origin
+			draw_circle(draw_position_gray, 64, Color(ALERT_WARNING, 0.5))
+
+		# The theme must not be Nintendo GameCube
+		else:
+
+			# Draw a gray circle at the event origin
+			draw_circle(draw_position_gray, 64, Color(0.502, 0.502, 0.502, 0.5))
 
 		# Check if for drag motion
 		if right_swipe_current_position != null:
@@ -116,8 +126,17 @@ func _draw() -> void:
 			# Define the position to draw the white circle
 			var draw_position_white = right_swipe_initial_position + right_swipe_delta
 
-			# Draw a white circle at the event location
-			draw_circle(draw_position_white, 48, Color(1.0, 1.0, 1.0, 0.5))
+			# Check if the theme is Nintendo GameCube
+			if current_theme == theme.NintendoGameCube:
+
+				# Draw a yellow circle at the event location
+				draw_circle(draw_position_white, 48, Color(BTN_WARNING, 0.5))
+
+			# The theme must not be Nintendo GameCube
+			else:
+
+				# Draw a white circle at the event location
+				draw_circle(draw_position_white, 48, Color(1.0, 1.0, 1.0, 0.5))
 
 
 ## Called when there is an input event.
