@@ -24,7 +24,8 @@ const MAX_DISTANCE := 64
 const SWIPE_DEADZONE := 8
 
 @export var current_theme = theme.DEFAULT
-@export var enable_analog_sticks := true
+@export var enable_analog_stick_left := true
+@export var enable_analog_stick_right := true
 
 var left_swipe_current_position = null
 var left_swipe_event_index = null
@@ -123,7 +124,7 @@ func _draw() -> void:
 func _input(event: InputEvent) -> void:
 
 	# Check if analog sticks are not enabled
-	if not enable_analog_sticks:
+	if not enable_analog_stick_left and not enable_analog_stick_right:
 
 		# Return without drawing anything
 		return
@@ -140,23 +141,29 @@ func _input(event: InputEvent) -> void:
 				# Skip processing this touch event for the virtual controller
 				return
 
-			# Check if the touch event took place on the left-half of the screen and the event has not been recorded
-			if event.position.x < get_viewport().get_visible_rect().size.x / 2 and !left_swipe_event_index:
+			# Check if the left analog stick is enabled
+			if enable_analog_stick_left:
 
-				# Record the touch event index
-				left_swipe_event_index = event.index
+				# Check if the touch event took place on the left-half of the screen and the event has not been recorded
+				if event.position.x < get_viewport().get_visible_rect().size.x / 2 and !left_swipe_event_index:
 
-				# Record inital position
-				left_swipe_initial_position = event.position
+					# Record the touch event index
+					left_swipe_event_index = event.index
 
-			# Check if the touch event took place on the right-half of the screen and the event has not been recorded
-			if event.position.x > get_viewport().get_visible_rect().size.x / 2 and !right_swipe_event_index:
+					# Record inital position
+					left_swipe_initial_position = event.position
 
-				# Record the touch event index
-				right_swipe_event_index = event.index
+			# Check if the right analog stick is enabled
+			if enable_analog_stick_right:
 
-				# Record inital position
-				right_swipe_initial_position = event.position
+				# Check if the touch event took place on the right-half of the screen and the event has not been recorded
+				if event.position.x > get_viewport().get_visible_rect().size.x / 2 and !right_swipe_event_index:
+
+					# Record the touch event index
+					right_swipe_event_index = event.index
+
+					# Record inital position
+					right_swipe_initial_position = event.position
 
 		# [touch] screen just _released_
 		else:
@@ -213,7 +220,7 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventScreenDrag:
 
 		# Check if the event is related to the left-swipe event
-		if event.index == left_swipe_event_index:
+		if event.index == left_swipe_event_index and enable_analog_stick_left:
 
 			# Record swipe current position
 			left_swipe_current_position = event.position
@@ -252,7 +259,7 @@ func _input(event: InputEvent) -> void:
 				Input.action_release("move_down")
 
 		# Check if the event is related to the right-swipe event
-		if event.index == right_swipe_event_index:
+		if event.index == right_swipe_event_index and enable_analog_stick_right:
 
 			# Record swipe current position
 			right_swipe_current_position = event.position
@@ -360,6 +367,8 @@ func update_theme(new_theme: theme) -> void:
 	current_theme = new_theme
 
 	# Reset the virtual controller state
+	enable_analog_stick_left = true
+	enable_analog_stick_right = true
 	left_swipe_current_position = null
 	left_swipe_event_index = null
 	left_swipe_delta = null
@@ -414,7 +423,8 @@ func update_theme(new_theme: theme) -> void:
 
 	# Check if the current theme is "New Nintendo 3DS"
 	if current_theme == theme.NewNintendo3DS:
-		enable_analog_sticks = true
+		enable_analog_stick_left = true
+		enable_analog_stick_right = true
 		touch_screen_button_a.self_modulate = BTN_DANGER
 		touch_screen_button_b.self_modulate = BTN_WARNING
 		touch_screen_button_x.self_modulate = BTN_PRIMARY
@@ -430,7 +440,8 @@ func update_theme(new_theme: theme) -> void:
 
 	# Check if the current theme is "Nintendo 64"
 	elif current_theme == theme.Nintendo64:
-		enable_analog_sticks = true
+		enable_analog_stick_left = true
+		enable_analog_stick_right = false
 		touch_screen_button_down.self_modulate = BTN_DARK
 		touch_screen_button_up.self_modulate = BTN_DARK
 		touch_screen_button_left.self_modulate = BTN_DARK
@@ -456,7 +467,8 @@ func update_theme(new_theme: theme) -> void:
 
 	# Check if the current theme is "Nintendo Entertainment System"
 	elif current_theme == theme.NintendoEntertainmentSystem:
-		enable_analog_sticks = false
+		enable_analog_stick_left = false
+		enable_analog_stick_right = false
 		touch_screen_button_down.self_modulate = BTN_DARK
 		touch_screen_button_up.self_modulate = BTN_DARK
 		touch_screen_button_left.self_modulate = BTN_DARK
@@ -480,7 +492,8 @@ func update_theme(new_theme: theme) -> void:
 
 	# Check if the current theme is "Nintendo GameCube"
 	elif current_theme == theme.NintendoGameCube:
-		enable_analog_sticks = true
+		enable_analog_stick_left = true
+		enable_analog_stick_right = true
 		touch_screen_button_down.self_modulate = BTN_SECONDARY
 		touch_screen_button_up.self_modulate = BTN_SECONDARY
 		touch_screen_button_left.self_modulate = BTN_SECONDARY
@@ -506,7 +519,8 @@ func update_theme(new_theme: theme) -> void:
 
 	# Check if the current theme is "Super Nintendo Entertainment System"
 	elif current_theme == theme.SuperNintendoEntertainmentSystem:
-		enable_analog_sticks = false
+		enable_analog_stick_left = false
+		enable_analog_stick_right = false
 		touch_screen_button_down.self_modulate = BTN_DARK
 		touch_screen_button_up.self_modulate = BTN_DARK
 		touch_screen_button_left.self_modulate = BTN_DARK
