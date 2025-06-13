@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://d1yeyb0luu5cy"]
+[gd_scene load_steps=18 format=3 uid="uid://d1yeyb0luu5cy"]
 
 [ext_resource type="Texture2D" uid="uid://bf7ao2r1en2cq" path="res://addons/virtual_controller/assets/textures/game_icons/PNG/White/2x/buttonA.png" id="1_dyvab"]
 [ext_resource type="Texture2D" uid="uid://gq6lwxhonocy" path="res://addons/virtual_controller/assets/textures/game_icons/PNG/Black/2x/buttonA.png" id="2_k0k70"]
@@ -11,6 +11,12 @@
 [ext_resource type="Texture2D" uid="uid://01tnswshakyt" path="res://addons/virtual_controller/assets/textures/game_icons/PNG/White/2x/buttonStart.png" id="7_o7vf7"]
 [ext_resource type="Texture2D" uid="uid://bb57xq2u6f5xc" path="res://addons/virtual_controller/assets/textures/game_icons/PNG/Black/2x/buttonY.png" id="8_3qn5a"]
 [ext_resource type="Texture2D" uid="uid://cnoglo10hvyc1" path="res://addons/virtual_controller/assets/textures/game_icons/PNG/Black/2x/buttonStart.png" id="8_vh2ts"]
+[ext_resource type="Texture2D" uid="uid://cpl7bnbr2af4k" path="res://addons/virtual_controller/assets/textures/game_icons/PNG/White/2x/button.png" id="12_pcoid"]
+[ext_resource type="Texture2D" uid="uid://u35bf0p63cxx" path="res://addons/virtual_controller/assets/textures/game_icons/PNG/Black/2x/button.png" id="13_2be4w"]
+[ext_resource type="Texture2D" uid="uid://b3tjxca463ms5" path="res://addons/virtual_controller/assets/textures/game_icons/PNG/White/2x/up.png" id="13_qcjq4"]
+[ext_resource type="Texture2D" uid="uid://dusktsyyxoavo" path="res://addons/virtual_controller/assets/textures/game_icons/PNG/White/2x/down.png" id="14_2be4w"]
+[ext_resource type="Texture2D" uid="uid://cgfpawfw7klm8" path="res://addons/virtual_controller/assets/textures/game_icons/PNG/White/2x/left.png" id="15_wdm52"]
+[ext_resource type="Texture2D" uid="uid://cyontycqu5ajq" path="res://addons/virtual_controller/assets/textures/game_icons/PNG/White/2x/right.png" id="16_6fb8o"]
 
 [node name="VirtualButtonsBottomRight" type="Control"]
 layout_mode = 3
@@ -79,3 +85,63 @@ position = Vector2(-100, -100)
 texture_normal = ExtResource("7_o7vf7")
 texture_pressed = ExtResource("8_vh2ts")
 action = "start"
+
+[node name="TouchScreenButtonCUp" type="TouchScreenButton" parent="." groups=["TouchScreenButton"]]
+self_modulate = Color(1, 100, 0, 1)
+position = Vector2(-131, -340)
+scale = Vector2(0.8, 0.8)
+texture_normal = ExtResource("12_pcoid")
+texture_pressed = ExtResource("13_2be4w")
+passby_press = true
+action = "look_up"
+
+[node name="CUp" type="Sprite2D" parent="TouchScreenButtonCUp"]
+self_modulate = Color(0.75, 0.75, 0.75, 1)
+position = Vector2(52, 48)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("13_qcjq4")
+
+[node name="TouchScreenButtonCDown" type="TouchScreenButton" parent="." groups=["TouchScreenButton"]]
+self_modulate = Color(1, 100, 0, 1)
+position = Vector2(-131, -250)
+scale = Vector2(0.8, 0.8)
+texture_normal = ExtResource("12_pcoid")
+texture_pressed = ExtResource("13_2be4w")
+passby_press = true
+action = "look_down"
+
+[node name="CDown" type="Sprite2D" parent="TouchScreenButtonCDown"]
+self_modulate = Color(0.75, 0.75, 0.75, 1)
+position = Vector2(52, 53)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("14_2be4w")
+
+[node name="TouchScreenButtonCLeft" type="TouchScreenButton" parent="." groups=["TouchScreenButton"]]
+self_modulate = Color(1, 100, 0, 1)
+position = Vector2(-176, -295)
+scale = Vector2(0.8, 0.8)
+texture_normal = ExtResource("12_pcoid")
+texture_pressed = ExtResource("13_2be4w")
+passby_press = true
+action = "look_left"
+
+[node name="CLeft" type="Sprite2D" parent="TouchScreenButtonCLeft"]
+self_modulate = Color(0.75, 0.75, 0.75, 1)
+position = Vector2(49.5, 50.5)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("15_wdm52")
+
+[node name="TouchScreenButtonCRight" type="TouchScreenButton" parent="." groups=["TouchScreenButton"]]
+self_modulate = Color(1, 100, 0, 1)
+position = Vector2(-88, -295)
+scale = Vector2(0.8, 0.8)
+texture_normal = ExtResource("12_pcoid")
+texture_pressed = ExtResource("13_2be4w")
+passby_press = true
+action = "look_right"
+
+[node name="CRight" type="Sprite2D" parent="TouchScreenButtonCRight"]
+self_modulate = Color(0.75, 0.75, 0.75, 1)
+position = Vector2(54.5, 50.5)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("16_6fb8o")

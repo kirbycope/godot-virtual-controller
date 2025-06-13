@@ -50,6 +50,10 @@ var tap_initial_position = null
 @onready var touch_screen_button_b: TouchScreenButton = $"../VirtualButtons/VirtualButtonsBottomRight/TouchScreenButtonB"
 @onready var touch_screen_button_b_background: Sprite2D = $"../VirtualButtons/VirtualButtonsBottomRight/TouchScreenButtonB/Background"
 @onready var touch_screen_button_b_initial_position := touch_screen_button_b.position
+@onready var touch_screen_button_c_up: TouchScreenButton = $"../VirtualButtons/VirtualButtonsBottomRight/TouchScreenButtonCUp"
+@onready var touch_screen_button_c_down: TouchScreenButton = $"../VirtualButtons/VirtualButtonsBottomRight/TouchScreenButtonCDown"
+@onready var touch_screen_button_c_left: TouchScreenButton = $"../VirtualButtons/VirtualButtonsBottomRight/TouchScreenButtonCLeft"
+@onready var touch_screen_button_c_right: TouchScreenButton = $"../VirtualButtons/VirtualButtonsBottomRight/TouchScreenButtonCRight"
 @onready var touch_screen_button_x: TouchScreenButton = $"../VirtualButtons/VirtualButtonsBottomRight/TouchScreenButtonX"
 @onready var touch_screen_button_x_background: Sprite2D = $"../VirtualButtons/VirtualButtonsBottomRight/TouchScreenButtonX/Background"
 @onready var touch_screen_button_x_initial_position := touch_screen_button_x.position
@@ -385,6 +389,10 @@ func update_theme(new_theme: theme) -> void:
 	touch_screen_button_b.self_modulate = Color.WHITE
 	touch_screen_button_b_background.self_modulate = BTN_DANGER
 	touch_screen_button_b.position = touch_screen_button_b_initial_position
+	touch_screen_button_c_up.hide()
+	touch_screen_button_c_down.hide()
+	touch_screen_button_c_left.hide()
+	touch_screen_button_c_right.hide()
 	touch_screen_button_x.show()
 	touch_screen_button_x.self_modulate = Color.WHITE
 	touch_screen_button_x_background.self_modulate = BTN_PRIMARY
@@ -431,18 +439,20 @@ func update_theme(new_theme: theme) -> void:
 		touch_screen_button_b.self_modulate = BTN_SUCCESS
 		touch_screen_button_a_background.self_modulate = Color.GRAY
 		touch_screen_button_b_background.self_modulate = Color.GRAY
-		touch_screen_button_x.visible = false
-		touch_screen_button_y.visible = false
-		touch_screen_button_select.visible = false
+		touch_screen_button_c_up.show()
+		touch_screen_button_c_down.show()
+		touch_screen_button_c_left.show()
+		touch_screen_button_c_right.show()
+		touch_screen_button_x.hide()
+		touch_screen_button_y.hide()
+		touch_screen_button_select.hide()
 		touch_screen_button_start.self_modulate = BTN_DANGER
 		touch_screen_button_l_1.self_modulate = BTN_DARK
 		touch_screen_button_l_2.self_modulate = BTN_DARK
 		touch_screen_button_r_1.self_modulate = BTN_DARK
 		touch_screen_button_r_2.self_modulate = BTN_DARK
-		touch_screen_button_a.position = touch_screen_button_b_initial_position
-		touch_screen_button_b.position = touch_screen_button_a_initial_position
-		touch_screen_button_x.position = touch_screen_button_y_initial_position
-		touch_screen_button_y.position = touch_screen_button_x_initial_position
+		touch_screen_button_a.position = touch_screen_button_a_initial_position
+		touch_screen_button_b.position = touch_screen_button_x_initial_position
 
 	# Check if the current theme is "Nintendo Entertainment System"
 	elif current_theme == theme.NintendoEntertainmentSystem:
@@ -455,14 +465,14 @@ func update_theme(new_theme: theme) -> void:
 		touch_screen_button_b.self_modulate = BTN_DANGER
 		touch_screen_button_a_background.self_modulate = Color.BLACK
 		touch_screen_button_b_background.self_modulate = Color.BLACK
-		touch_screen_button_x.visible = false
-		touch_screen_button_y.visible = false
+		touch_screen_button_x.hide()
+		touch_screen_button_y.hide()
 		touch_screen_button_select.self_modulate = BTN_DARK
 		touch_screen_button_start.self_modulate = BTN_DARK
-		touch_screen_button_l_1.visible = false
-		touch_screen_button_l_2.visible = false
-		touch_screen_button_r_1.visible = false
-		touch_screen_button_r_2.visible = false
+		touch_screen_button_l_1.hide()
+		touch_screen_button_l_2.hide()
+		touch_screen_button_r_1.hide()
+		touch_screen_button_r_2.hide()
 		touch_screen_button_a.position = touch_screen_button_b_initial_position
 		touch_screen_button_b.position = touch_screen_button_a_initial_position
 		touch_screen_button_x.position = touch_screen_button_y_initial_position
@@ -483,7 +493,7 @@ func update_theme(new_theme: theme) -> void:
 		touch_screen_button_b_background.self_modulate = Color.BLACK
 		touch_screen_button_x_background.self_modulate = Color.BLACK
 		touch_screen_button_y_background.self_modulate = Color.BLACK
-		touch_screen_button_select.visible = false
+		touch_screen_button_select.hide()
 		touch_screen_button_start.self_modulate = BTN_SECONDARY
 		touch_screen_button_l_1.self_modulate = BTN_SECONDARY
 		touch_screen_button_l_2.self_modulate = BTN_SECONDARY
@@ -512,9 +522,9 @@ func update_theme(new_theme: theme) -> void:
 		touch_screen_button_select.self_modulate = BTN_DARK
 		touch_screen_button_start.self_modulate = BTN_DARK
 		touch_screen_button_l_1.self_modulate = BTN_SECONDARY
-		touch_screen_button_l_2.visible = false
+		touch_screen_button_l_2.hide()
 		touch_screen_button_r_1.self_modulate = BTN_SECONDARY
-		touch_screen_button_r_2.visible = false
+		touch_screen_button_r_2.hide()
 		touch_screen_button_a.position = touch_screen_button_b_initial_position
 		touch_screen_button_b.position = touch_screen_button_a_initial_position
 		touch_screen_button_x.position = touch_screen_button_y_initial_position
