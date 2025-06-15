@@ -1,16 +1,22 @@
-[gd_scene load_steps=15 format=3 uid="uid://bes757mpanhex"]
+[gd_scene load_steps=19 format=3 uid="uid://bes757mpanhex"]
 
 [ext_resource type="Script" uid="uid://d3qlweosjgyca" path="res://scripts/2d_test.gd" id="1_icpdp"]
 [ext_resource type="PackedScene" uid="uid://cx7x0f3lh4aus" path="res://addons/virtual_controller/scenes/canvas_layer.tscn" id="1_l41ob"]
-[ext_resource type="Texture2D" uid="uid://bh4stkedwko0s" path="res://assets/xbox.png" id="3_2xjc5"]
+[ext_resource type="Texture2D" uid="uid://bh4stkedwko0s" path="res://assets/xboxs.png" id="3_2xjc5"]
 [ext_resource type="Texture2D" uid="uid://cdexd85b4iuer" path="res://assets/nes.png" id="3_5c1e3"]
+[ext_resource type="Texture2D" uid="uid://b13s07e382vwq" path="res://addons/virtual_controller/assets/textures/game_icons/PNG/White/1x/return.png" id="3_qkja4"]
 [ext_resource type="Texture2D" uid="uid://c1h0768kp8rgn" path="res://assets/snes.png" id="4_2xjc5"]
+[ext_resource type="Texture2D" uid="uid://bl5xurs65mkfv" path="res://assets/xboxx.png" id="5_ewn47"]
 [ext_resource type="Texture2D" uid="uid://caitflv23lisg" path="res://assets/n64.png" id="5_qkja4"]
 [ext_resource type="Texture2D" uid="uid://f8okt18oq6gy" path="res://assets/ngc.png" id="6_ewn47"]
 [ext_resource type="Texture2D" uid="uid://cllknlc1gent1" path="res://assets/3ds.png" id="7_u6ury"]
+[ext_resource type="Texture2D" uid="uid://clnd3kqggvhfh" path="res://assets/ps5.png" id="11_u6ury"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5c1e3"]
 font_size = 32
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ssxb"]
+size = Vector2(50, 50)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u6ury"]
 size = Vector2(185, 148)
@@ -31,6 +37,7 @@ size = Vector2(170, 146)
 script = ExtResource("1_icpdp")
 
 [node name="Controls" parent="." instance=ExtResource("1_l41ob")]
+hide_touch_controls = false
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -42,48 +49,31 @@ offset_bottom = 720.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Action" type="Label" parent="Control"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -99.0
-offset_top = 92.5
-offset_right = -49.0
-offset_bottom = 115.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "Action"
-
-[node name="TextEdit" type="TextEdit" parent="Control"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -46.0
-offset_top = 86.5
-offset_right = 82.0
-offset_bottom = 122.5
-grow_horizontal = 2
-grow_vertical = 2
-scroll_fit_content_height = true
-
 [node name="Theme" type="Label" parent="Control"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -118.0
-offset_top = 230.0
+offset_top = 166.0
 offset_right = 118.0
-offset_bottom = 275.0
+offset_bottom = 211.0
 grow_horizontal = 2
 text = "Select a theme:"
 label_settings = SubResource("LabelSettings_5c1e3")
+
+[node name="ResetTheme" type="TextureButton" parent="Control/Theme"]
+visible = false
+layout_mode = 0
+offset_left = 245.0
+offset_top = -3.0
+offset_right = 295.0
+offset_bottom = 47.0
+texture_normal = ExtResource("3_qkja4")
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="Control/Theme/ResetTheme"]
+position = Vector2(25, 25)
+shape = SubResource("RectangleShape2D_0ssxb")
 
 [node name="HFlowContainer" type="HFlowContainer" parent="Control"]
 layout_mode = 1
@@ -92,19 +82,29 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -640.0
-offset_top = -73.0
-offset_right = 640.0
-offset_bottom = 73.0
+offset_left = -600.0
+offset_top = -127.0
+offset_right = 760.0
+offset_bottom = 19.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.9, 0.9)
 alignment = 1
+last_wrap_alignment = 2
 
-[node name="XBox" type="TextureButton" parent="Control/HFlowContainer"]
+[node name="XBoxS" type="TextureButton" parent="Control/HFlowContainer"]
 layout_mode = 2
 texture_normal = ExtResource("3_2xjc5")
 
-[node name="XBox" type="TouchScreenButton" parent="Control/HFlowContainer/XBox"]
+[node name="XBoxS" type="TouchScreenButton" parent="Control/HFlowContainer/XBoxS"]
+position = Vector2(94, 73)
+shape = SubResource("RectangleShape2D_u6ury")
+
+[node name="XBoxX" type="TextureButton" parent="Control/HFlowContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_ewn47")
+
+[node name="XBoxX" type="TouchScreenButton" parent="Control/HFlowContainer/XBoxX"]
 position = Vector2(94, 73)
 shape = SubResource("RectangleShape2D_u6ury")
 
@@ -148,8 +148,50 @@ texture_normal = ExtResource("7_u6ury")
 position = Vector2(74, 73)
 shape = SubResource("RectangleShape2D_5c1e3")
 
-[connection signal="pressed" from="Control/HFlowContainer/XBox" to="." method="_on_x_box_pressed"]
-[connection signal="pressed" from="Control/HFlowContainer/XBox/XBox" to="." method="_on_x_box_pressed"]
+[node name="PS5" type="TextureButton" parent="Control/HFlowContainer"]
+layout_mode = 2
+texture_normal = ExtResource("11_u6ury")
+
+[node name="PS5" type="TouchScreenButton" parent="Control/HFlowContainer/PS5"]
+position = Vector2(94, 73)
+shape = SubResource("RectangleShape2D_u6ury")
+
+[node name="Action" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -99.0
+offset_top = 44.5
+offset_right = -49.0
+offset_bottom = 67.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Action"
+
+[node name="TextEdit" type="TextEdit" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = 38.5
+offset_right = 82.0
+offset_bottom = 74.5
+grow_horizontal = 2
+grow_vertical = 2
+scroll_fit_content_height = true
+
+[connection signal="pressed" from="Control/Theme/ResetTheme" to="." method="_on_reset_theme_pressed"]
+[connection signal="pressed" from="Control/Theme/ResetTheme/TouchScreenButton" to="." method="_on_reset_theme_pressed"]
+[connection signal="pressed" from="Control/HFlowContainer/XBoxS" to="." method="_on_x_box_s_pressed"]
+[connection signal="pressed" from="Control/HFlowContainer/XBoxS/XBoxS" to="." method="_on_x_box_s_pressed"]
+[connection signal="pressed" from="Control/HFlowContainer/XBoxX" to="." method="_on_x_box_x_pressed"]
+[connection signal="pressed" from="Control/HFlowContainer/XBoxX/XBoxX" to="." method="_on_x_box_x_pressed"]
 [connection signal="pressed" from="Control/HFlowContainer/NES" to="." method="_on_nes_pressed"]
 [connection signal="pressed" from="Control/HFlowContainer/NES/NES" to="." method="_on_nes_pressed"]
 [connection signal="pressed" from="Control/HFlowContainer/SNES" to="." method="_on_snes_pressed"]
@@ -160,3 +202,5 @@ shape = SubResource("RectangleShape2D_5c1e3")
 [connection signal="pressed" from="Control/HFlowContainer/NGC/NGC" to="." method="_on_ngc_pressed"]
 [connection signal="pressed" from="Control/HFlowContainer/N3DS" to="." method="_on_n_3ds_pressed"]
 [connection signal="pressed" from="Control/HFlowContainer/N3DS/N3DS" to="." method="_on_n_3ds_pressed"]
+[connection signal="pressed" from="Control/HFlowContainer/PS5" to="." method="_on_ps_5_pressed"]
+[connection signal="pressed" from="Control/HFlowContainer/PS5/PS5" to="." method="_on_ps_5_pressed"]

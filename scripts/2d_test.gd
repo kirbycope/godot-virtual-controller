@@ -2,6 +2,7 @@ extends Node2D
 # 2d_test.gd
 # Script for the test scene.
 
+@onready var reset_theme: TextureButton = $Control/Theme/ResetTheme
 @onready var text_edit: TextEdit = $Control/TextEdit
 @onready var virtual_controller: Node2D = $Controls/VirtualController
 
@@ -30,28 +31,52 @@ func _input(event: InputEvent) -> void:
 
 ## Handle "NES" button press.
 func _on_nes_pressed() -> void:
+	reset_theme.show()
 	virtual_controller.update_theme(virtual_controller.theme.NintendoEntertainmentSystem)
 
 
 ## Handle "SNES" button press.
 func _on_snes_pressed() -> void:
+	reset_theme.show()
 	virtual_controller.update_theme(virtual_controller.theme.SuperNintendoEntertainmentSystem)
 
 
 ## Handle "New 3DS" button press.
 func _on_n_3ds_pressed() -> void:
+	reset_theme.show()
 	virtual_controller.update_theme(virtual_controller.theme.NewNintendo3DS)
 
 
 ## Handle "N64" button press.
 func _on_n_64_pressed() -> void:
+	reset_theme.show()
 	virtual_controller.update_theme(virtual_controller.theme.Nintendo64)
 
 
 ## Handle "NGC" button press.
 func _on_ngc_pressed() -> void:
+	reset_theme.show()
 	virtual_controller.update_theme(virtual_controller.theme.NintendoGameCube)
 
-## Handle "XBox" button press.
-func _on_x_box_pressed() -> void:
+
+## Handle reset button press.
+func _on_reset_theme_pressed() -> void:
+	reset_theme.hide()
 	virtual_controller.update_theme(virtual_controller.theme.DEFAULT)
+
+
+## Handle "XBox Series S" button press.
+func _on_x_box_s_pressed() -> void:
+	reset_theme.show()
+	virtual_controller.update_theme(virtual_controller.theme.XBoxSeriesS)
+
+
+## Handle "XBox Series X" button press.
+func _on_x_box_x_pressed() -> void:
+	reset_theme.show()
+	virtual_controller.update_theme(virtual_controller.theme.XBoxSeriesX)
+
+
+func _on_ps_5_pressed() -> void:
+	reset_theme.show()
+	virtual_controller.update_theme(virtual_controller.theme.PlayStationSeries)
