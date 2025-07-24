@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bes757mpanhex"]
+[gd_scene load_steps=20 format=3 uid="uid://bes757mpanhex"]
 
 [ext_resource type="Script" uid="uid://d3qlweosjgyca" path="res://scripts/2d_test.gd" id="1_icpdp"]
 [ext_resource type="PackedScene" uid="uid://cx7x0f3lh4aus" path="res://addons/virtual_controller/scenes/canvas_layer.tscn" id="1_l41ob"]
@@ -32,6 +32,9 @@ size = Vector2(154, 146)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ewn47"]
 size = Vector2(170, 146)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_u6ury"]
+size = Vector2(140, 30)
 
 [node name="2dTest" type="Node2D"]
 script = ExtResource("1_icpdp")
@@ -186,6 +189,26 @@ grow_horizontal = 2
 grow_vertical = 2
 scroll_fit_content_height = true
 
+[node name="CheckButton" type="CheckButton" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -72.0
+offset_top = -47.0
+offset_right = 72.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+button_pressed = true
+text = "Show Labels"
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="Control/CheckButton" groups=["TouchScreenButton"]]
+modulate = Color(1, 1, 1, 0)
+texture_normal = SubResource("PlaceholderTexture2D_u6ury")
+
 [connection signal="pressed" from="Control/Theme/ResetTheme" to="." method="_on_reset_theme_pressed"]
 [connection signal="pressed" from="Control/Theme/ResetTheme/TouchScreenButton" to="." method="_on_reset_theme_pressed"]
 [connection signal="pressed" from="Control/HFlowContainer/XBoxS" to="." method="_on_x_box_s_pressed"]
@@ -204,3 +227,5 @@ scroll_fit_content_height = true
 [connection signal="pressed" from="Control/HFlowContainer/N3DS/N3DS" to="." method="_on_n_3ds_pressed"]
 [connection signal="pressed" from="Control/HFlowContainer/PS5" to="." method="_on_ps_5_pressed"]
 [connection signal="pressed" from="Control/HFlowContainer/PS5/PS5" to="." method="_on_ps_5_pressed"]
+[connection signal="toggled" from="Control/CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="released" from="Control/CheckButton/TouchScreenButton" to="." method="_on_touch_screen_button_released"]

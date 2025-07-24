@@ -2,9 +2,11 @@ extends Node2D
 # 2d_test.gd
 # Script for the test scene.
 
+@onready var check_button: CheckButton = $Control/CheckButton
 @onready var reset_theme: TextureButton = $Control/Theme/ResetTheme
 @onready var text_edit: TextEdit = $Control/TextEdit
 @onready var virtual_controller: Node2D = $Controls/VirtualController
+@onready var virtual_buttons: Control = $Controls/VirtualButtons
 
 
 ## Set the current input type.
@@ -76,7 +78,18 @@ func _on_x_box_x_pressed() -> void:
 	reset_theme.show()
 	virtual_controller.update_theme(virtual_controller.theme.XBoxSeriesX)
 
-
+## Handle "Playstation" button press.
 func _on_ps_5_pressed() -> void:
 	reset_theme.show()
 	virtual_controller.update_theme(virtual_controller.theme.PlayStationSeries)
+
+
+## Handle "Toggle Labels" button click.
+func _on_check_button_toggled(toggled_on: bool) -> void:
+	virtual_buttons.show_labels(toggled_on)
+
+
+## Handle "Toggle Labels" button released.
+func _on_touch_screen_button_released() -> void:
+	check_button.button_pressed = !check_button.button_pressed
+	virtual_buttons.show_labels(check_button.button_pressed)
