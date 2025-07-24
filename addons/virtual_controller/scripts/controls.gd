@@ -178,7 +178,7 @@ func _ready() -> void:
 
 	# Ⓐ Check if [button_0] action is not in the Input Map
 	if not InputMap.has_action(button_0):
-		# Add the [jump] action to the Input Map
+		# Add the [button_0] action to the Input Map
 		InputMap.add_action(button_0)
 
 		# Keyboard [Space]
@@ -195,7 +195,7 @@ func _ready() -> void:
 
 	# Ⓑ Check if [button_1] action is not in the Input Map
 	if not InputMap.has_action(button_1):
-		# Add the [sprint] action to the Input Map
+		# Add the [button_1] action to the Input Map
 		InputMap.add_action(button_1)
 
 		# Keyboard [Shift]
@@ -212,7 +212,7 @@ func _ready() -> void:
 
 	# Ⓧ Check if [button_2] action is not in the Input Map
 	if not InputMap.has_action(button_2):
-		# Add the [use] action to the Input Map
+		# Add the [button_2] action to the Input Map
 		InputMap.add_action(button_2)
 
 		# Keyboard [E]
@@ -227,7 +227,7 @@ func _ready() -> void:
 
 	# Ⓨ Check if [button_3] action is not in the Input Map
 	if not InputMap.has_action(button_3):
-		# Add the [crouch] action to the Input Map
+		# Add the [button_3] action to the Input Map
 		InputMap.add_action(button_3)
 
 		# Keyboard [Ctrl]
@@ -242,7 +242,7 @@ func _ready() -> void:
 
 	# 🄻1 Check if [button_4] action is not in the Input Map
 	if not InputMap.has_action(button_4):
-		# Add the [left_punch] action to the Input Map
+		# Add the [button_4] action to the Input Map
 		InputMap.add_action(button_4)
 
 		# Mouse [left-click]
@@ -275,7 +275,7 @@ func _ready() -> void:
 
 	# 🄻2 Check if [button_6] action is not in the Input Map
 	if not InputMap.has_action(button_6):
-		# Add the [left_kick] action to the Input Map
+		# Add the [button_6] action to the Input Map
 		InputMap.add_action(button_6)
 
 		# Mouse [forward-click]
@@ -369,9 +369,9 @@ func _ready() -> void:
 		joypad_button_event.button_index = JOY_BUTTON_RIGHT_STICK
 		InputMap.action_add_event(button_11, joypad_button_event)
 
-	# Check if [dpad_up] action is not in the Input Map
+	# Check if [button_12] action is not in the Input Map
 	if not InputMap.has_action(button_12):
-		# Add the [dpad_up] action to the Input Map
+		# Add the [button_12] action to the Input Map
 		InputMap.add_action(button_12)
 
 		# Controller [dpad, up]
@@ -384,24 +384,9 @@ func _ready() -> void:
 		key_event.physical_keycode = KEY_TAB
 		InputMap.action_add_event(button_12, key_event)
 
-	# Check if [dpad_left] action is not in the Input Map
-	if not InputMap.has_action(button_14):
-		# Add the [dpad_left] action to the Input Map
-		InputMap.add_action(button_14)
-
-		# Controller [dpad, left]
-		var joypad_button_event = InputEventJoypadButton.new()
-		joypad_button_event.button_index = JOY_BUTTON_DPAD_LEFT
-		InputMap.action_add_event(button_14, joypad_button_event)
-
-		# Keyboard [B]
-		var key_event = InputEventKey.new()
-		key_event.physical_keycode = KEY_B
-		InputMap.action_add_event(button_14, key_event)
-
-	# Check if [dpad_down] action is not in the Input Map
+	# Check if [button_13] action is not in the Input Map
 	if not InputMap.has_action(button_13):
-		# Add the [dpad_down] action to the Input Map
+		# Add the [button_13] action to the Input Map
 		InputMap.add_action(button_13)
 
 		# Controller [dpad, down]
@@ -414,9 +399,24 @@ func _ready() -> void:
 		key_event.physical_keycode = KEY_Q
 		InputMap.action_add_event(button_13, key_event)
 
-	# Check if [dpad, right] action is not in the Input Map
+	# Check if [button_14] action is not in the Input Map
+	if not InputMap.has_action(button_14):
+		# Add the [button_14] action to the Input Map
+		InputMap.add_action(button_14)
+
+		# Controller [dpad, left]
+		var joypad_button_event = InputEventJoypadButton.new()
+		joypad_button_event.button_index = JOY_BUTTON_DPAD_LEFT
+		InputMap.action_add_event(button_14, joypad_button_event)
+
+		# Keyboard [B]
+		var key_event = InputEventKey.new()
+		key_event.physical_keycode = KEY_B
+		InputMap.action_add_event(button_14, key_event)
+
+	# Check if [button_15] action is not in the Input Map
 	if not InputMap.has_action(button_15):
-		# Add the [dpad_down] action to the Input Map
+		# Add the [button_15] action to the Input Map
 		InputMap.add_action(button_15)
 
 		# Controller [dpad, right]
