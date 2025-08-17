@@ -13,6 +13,11 @@ A [physical and] virtual controller for the Godot Game Engine.
 1. Install the addon
 2. Add the [canvas_layer.tscn](addons/virtual_controller/scenes/canvas_layer.tscn) as a child node to your scene
 
+### Updating Dependencies
+Note: You can add this repo and any others to [/ci/requirements.txt](/ci/requirements.txt) to help keep things up to date in your project.
+1. Open a terminal window
+1. Run `./ci/install-requirements.sh`
+
 <details>
 <summary>Using Addon</summary>
 
